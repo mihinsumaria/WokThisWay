@@ -1,4 +1,4 @@
-from django.db import modelFoodamodels.Model.utils import timezone
+from django.db import model
 class Food(models.Model):
     course= models.CharField(max_length = 50)
     cuisine= models.CharField(max_length = 50)
