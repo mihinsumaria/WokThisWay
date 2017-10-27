@@ -1,0 +1,1033 @@
+[
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7f6794665f211fadee41ee9406039e889",
+    "name": "Signature Burgers",
+    "description": "Brioche or Multi Grain Bun.",
+    "items": [
+      {
+        "apiKey": "11343979",
+        "name": "America's Burger",
+        "description": "Beef burger with served with bacon, cheddar cheese, chopped fries, onion rings, tomato and chipotle mayo on a Brioche Bun.",
+        "basePrice": 9.45
+      },
+      {
+        "apiKey": "11343980",
+        "name": "Caliente Burger",
+        "description": "Beef burger with cheddar cheese, mozzarella, jalapeno, tomato, red onions and chipotle mayo on a Brioche Bun.",
+        "basePrice": 9.45
+      },
+      {
+        "apiKey": "11343981",
+        "name": "NYC Burger",
+        "description": "Beef burger with american cheese, lettuce, tomato, onions, pickles, ketchup and mayo on a brioche bun.",
+        "basePrice": 7.6
+      },
+      {
+        "apiKey": "11343982",
+        "name": "BBQ Burger",
+        "description": "American cheese, jalapeno, tomato, onions, egg and BBQ sauce on a brioche bun.",
+        "basePrice": 8.6
+      },
+      {
+        "apiKey": "11343983",
+        "name": "Gobble Gobble Turkey Burger",
+        "description": "Turkey burger on multi grain bun with swiss, lettuce, tomato, mustard and mayo.",
+        "basePrice": 9.9
+      },
+      {
+        "apiKey": "11343986",
+        "name": "Veggie Lover Burger",
+        "description": "Black bean burger on multi grain bun with avocado, cheddar cheese, tomato, onions and chipotle mayo.",
+        "basePrice": 9.9
+      },
+      {
+        "apiKey": "11343987",
+        "name": "(3) Slider Burgers",
+        "description": "Beef burgers on pretzel bun with cheddar cheese, onion, pickle and chipotle mayo.",
+        "basePrice": 7.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7de42495b5ff61ccfe41ee9406039e889",
+    "name": "Smoothies",
+    "items": [
+      {
+        "apiKey": "11344114",
+        "name": "Classic Combo Smoothie - Regular",
+        "description": "Orange, Strawberry, and Banana.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344116",
+        "name": "Classic Combo Smoothie - XL",
+        "description": "Orange, Strawberry, and Banana.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344119",
+        "name": "Morning Glory - Regular",
+        "description": "Apple, kiwi and orange.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344121",
+        "name": "Morning Glory - XL",
+        "description": "Apple, kiwi and orange.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344122",
+        "name": "Tropical Freeze - Regular",
+        "description": "Orange, pineapple and banana.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344123",
+        "name": "Tropical Freeze - XL",
+        "description": "Orange, pineapple and banana.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344124",
+        "name": "Energy Shake Smoothie - Regular",
+        "description": "Carrot, celery and cucumber.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344125",
+        "name": "Energy Shake Smoothie - XL",
+        "description": "Carrot, celery and cucumber.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344126",
+        "name": "Vitamin Shake Smoothie - Regular",
+        "description": "Carrot, celery and tomato.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344127",
+        "name": "Vitamin Shake Smoothie - XL",
+        "description": "Carrot, celery and tomato.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344128",
+        "name": "Fresh and Fruity Smoothie - Regular",
+        "description": "Apple, orange and banana.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344129",
+        "name": "Fresh and Fruity Smoothie - XL",
+        "description": "Apple, orange and banana.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344131",
+        "name": "Rolls Royce Smoothie - Regular",
+        "description": "Orange, strawberry, and kiwi.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344133",
+        "name": "Rolls Royce Smoothie - XL",
+        "description": "Orange, strawberry, and kiwi.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344134",
+        "name": "Island Passion Smoothie - Regular",
+        "description": "Orange, pineapple and kiwi.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344135",
+        "name": "Island Passion Smoothie - XL",
+        "description": "Orange, pineapple and kiwi.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344136",
+        "name": "Greens Smoothie - Regular",
+        "description": "Kale, spinach, cucumber, lemon, apple and ginger.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344137",
+        "name": "Greens Smoothie - XL",
+        "description": "Kale, spinach, cucumber, lemon, apple and ginger.  Choice of regular or xl.",
+        "basePrice": 7.3
+      },
+      {
+        "apiKey": "11344138",
+        "name": "Detox Smoothie - Regular",
+        "description": "Beets, carrots, celery, spinach, lemon and ginger.  Choice of regular or xl.",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344140",
+        "name": "Detox Smoothie - XL",
+        "description": "Beets, carrots, celery, spinach, lemon and ginger.  Choice of regular or xl.",
+        "basePrice": 7.3
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a790b0ecba2a19f2b2e41ee9406039e889",
+    "name": "Fresh Squeezed Juices",
+    "description": "Choice of orange, apple or carrot.",
+    "items": [
+      {
+        "apiKey": "11344143",
+        "name": "Fresh Squeezed Juice - Small",
+        "description": "  Choice of small, medium, large, or x-large.",
+        "basePrice": 2.3
+      },
+      {
+        "apiKey": "11344144",
+        "name": "Fresh Squeezed Juice - Medium",
+        "description": "  Choice of small, medium, large, or x-large.",
+        "basePrice": 3.25
+      },
+      {
+        "apiKey": "11344145",
+        "name": "Fresh Squeezed Juice - Large",
+        "description": "  Choice of small, medium, large, or x-large.",
+        "basePrice": 4.65
+      },
+      {
+        "apiKey": "11344147",
+        "name": "Fresh Squeezed Juice - X-Large",
+        "description": "  Choice of small, medium, large, or x-large.",
+        "basePrice": 6.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7d975a7e044cdaf32e41ee9406039e889",
+    "name": "Sweets & Desserts",
+    "description": "Call and ask about our dessert specials.",
+    "items": [
+      {
+        "apiKey": "11344149",
+        "name": "Cheese Cake",
+        "basePrice": 4.95
+      },
+      {
+        "apiKey": "11344150",
+        "name": "Chocolate Mousse",
+        "basePrice": 4.95
+      },
+      {
+        "apiKey": "11344152",
+        "name": "Red Velvet Cake",
+        "basePrice": 4.95
+      },
+      {
+        "apiKey": "11344153",
+        "name": "Homemade Mini Chocolate Chip Cookies",
+        "basePrice": 1.15
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a77a08c2a8d30bab55e41ee9406039e889",
+    "name": "Breakfast - Eggs",
+    "description": "Add extra eggs, egg whites, bacon, ham, turkey bacon, sausage, american, cheddar, swiss, mozzarella or feta cheese for extra.",
+    "items": [
+      {
+        "apiKey": "11344154",
+        "name": "One Egg on a Roll",
+        "basePrice": 2.75
+      },
+      {
+        "apiKey": "11344155",
+        "name": "Two Eggs on a Roll",
+        "basePrice": 3.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a716c7fa0ad6f21409e41ee9406039e889",
+    "name": "Breakfast - Omelettes",
+    "description": "All served with home fries, toast and coffee or tea.",
+    "items": [
+      {
+        "apiKey": "11344171",
+        "name": "Greek Omelette",
+        "description": "Feta, cherry tomato, red onion, salt, pepper and oregano.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344174",
+        "name": "America's Omelette",
+        "description": "Turkey bacon, cheddar, red onion, peppers.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344176",
+        "name": "Choice of Cheese Omelette",
+        "description": "Swiss, American or Mozzarella cheese.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344177",
+        "name": "Western or Mushroom Omelette",
+        "basePrice": 7.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a781951febfebe6862e41ee9406039e889",
+    "name": "Breakfast - Wraps",
+    "description": "Served with coffee or tea.",
+    "items": [
+      {
+        "apiKey": "11344184",
+        "name": "Egg White Vegetable Wrap",
+        "description": "Mushroom, broccoli, and onion.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344186",
+        "name": "Spanish Wrap",
+        "description": "Tomato, Pepper, Onion and Salsa Sauce.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344187",
+        "name": "Mykonos Wrap",
+        "description": "Tomato, spinach and feta cheese.",
+        "basePrice": 6.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7c8f2362c4ad187c0e41ee9406039e889",
+    "name": "Breakfast - Healthy Start",
+    "items": [
+      {
+        "apiKey": "11344189",
+        "name": "Hot Oatmeal",
+        "description": "Banana, Raisins or Walnuts for extra.",
+        "basePrice": 3.45
+      },
+      {
+        "apiKey": "11344190",
+        "name": "Fresh Fruit Salad",
+        "basePrice": 4.15
+      },
+      {
+        "apiKey": "11344192",
+        "name": "Greek Yogurt Parfait",
+        "basePrice": 4.6
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a779c63b845ad401ebe41ee9406039e889",
+    "name": "Breakfast - From the Oven",
+    "items": [
+      {
+        "apiKey": "11344194",
+        "name": "Donuts",
+        "basePrice": 1.35
+      },
+      {
+        "apiKey": "11344197",
+        "name": "Bagels & Bailys",
+        "basePrice": 1.35
+      },
+      {
+        "apiKey": "11344199",
+        "name": "Muffins",
+        "basePrice": 2.55
+      },
+      {
+        "apiKey": "11344200",
+        "name": "Croissants",
+        "basePrice": 2.55
+      },
+      {
+        "apiKey": "11344201",
+        "name": "Bagels & Bailys with Cream Cheese",
+        "basePrice": 2.55
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a772263a2220f0375de41ee9406039e889",
+    "name": "Breakfast - From the Griddle",
+    "description": "With bananas, walnuts, chocolate chip nutella, or peanut butter for extra.",
+    "items": [
+      {
+        "apiKey": "11344203",
+        "name": "(3) Pancakes or French Toast",
+        "basePrice": 5.5
+      },
+      {
+        "apiKey": "11344206",
+        "name": "Nutella French Toast",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344207",
+        "name": "Banana Walnut Pancakes",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344209",
+        "name": "Chocolate Chip Pancakes",
+        "basePrice": 6.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a79e7972ef86307759e41ee9406039e889",
+    "name": "Sides",
+    "items": [
+      {
+        "apiKey": "11953772",
+        "name": "Fries",
+        "basePrice": 4
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7c840f718cf4c9097e41ee9406039e889",
+    "name": "Signature Salads",
+    "items": [
+      {
+        "apiKey": "11343958",
+        "name": "House Salad - Small",
+        "description": "With chicken.  Choice of small or large.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11343959",
+        "name": "House Salad - Large",
+        "description": "With chicken.  Choice of small or large.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11343960",
+        "name": "Chicken Caesar Salad - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11343961",
+        "name": "Chicken Caesar Salad - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11343962",
+        "name": "Authentic Greek \"Horiatiki\" Salad - Small",
+        "description": "Tomato, cucumber, onions, olives, feta, olive oil and oregano. Add chicken for extra.  Choice of small or large.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11343963",
+        "name": "Authentic Greek \"Horiatiki\" Salad - Large",
+        "description": "Tomato, cucumber, onions, olives, feta, olive oil and oregano. Add chicken for extra.  Choice of small or large.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11343964",
+        "name": "Spring Fling Salad",
+        "description": "Mesclun, avocado, cranberry, cherry tomato, walnuts, feta cheese, chickpeas and sesame ginger.",
+        "basePrice": 9.95
+      },
+      {
+        "apiKey": "11343968",
+        "name": "Cobb Salad",
+        "description": "Romain chicken, bacon, avocado, egg, crumble blue cheese, red wine vinaigrette.",
+        "basePrice": 10.95
+      },
+      {
+        "apiKey": "11343969",
+        "name": "Honey Mustard Chicken Salad",
+        "description": "Panko chicken, cheddar, mozzarella, cherry tomato, red onion, light balsamic with honey mustard.",
+        "basePrice": 9.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7c8125b10f922e5d8e41ee9406039e889",
+    "name": "Soups",
+    "description": "Homemade soup made fresh daily.",
+    "items": [
+      {
+        "apiKey": "11343970",
+        "name": "Homemade Soup of the Day - 12 oz",
+        "description": "  Choice of 12 oz or 16 oz.",
+        "basePrice": 3.95
+      },
+      {
+        "apiKey": "11343972",
+        "name": "Homemade Soup of the Day - 16 oz",
+        "description": "  Choice of 12 oz or 16 oz.",
+        "basePrice": 4.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7725ec353058d7504e41ee9406039e889",
+    "name": "Salad Creations",
+    "items": [
+      {
+        "apiKey": "11343973",
+        "name": "Make Your Own Salad - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 3.65
+      },
+      {
+        "apiKey": "11343974",
+        "name": "Make Your Own Salad - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 4.65
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7042916979f8ad470e41ee9406039e889",
+    "name": "Build Your Own Burger",
+    "items": [
+      {
+        "apiKey": "11343988",
+        "name": "Build Your Own Beef Burger",
+        "basePrice": 6.4
+      },
+      {
+        "apiKey": "11343989",
+        "name": "Build Your Own Specialty Burger",
+        "description": "Build your own turkey, black bean veggie, grilled chicken or panko chicken burger.",
+        "basePrice": 6.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a79ff2317d0e9e9533e41ee9406039e889",
+    "name": "Homemade Wraps",
+    "description": "Choose: plain, whole wheat or spinach tortilla.",
+    "items": [
+      {
+        "apiKey": "11344008",
+        "name": "B.L.T. Wrap",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344009",
+        "name": "Caesar Salad Wrap",
+        "description": "Available with chicken for extra.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344010",
+        "name": "Greek Salad Wrap",
+        "description": "Available with chicken for extra.",
+        "basePrice": 6.95
+      },
+      {
+        "apiKey": "11344011",
+        "name": "California Grill Wrap",
+        "description": "Grilled fresh vegetables and balsamic vinaigrette.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344012",
+        "name": "Verona Wrap",
+        "description": "Grilled chicken, roast peppers, fresh mozzarella and balsamic vinaigrette.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344013",
+        "name": "Loco Wrap",
+        "description": "Chicken and steak with rice, cheddar, mozzarella, onion, hot sauce and sour cream.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11344014",
+        "name": "Chicken Fajitas Wrap",
+        "description": "Grilled chicken, roast peppers, mushroom and salsa.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344016",
+        "name": "Chipotle Wrap",
+        "description": "Panko chicken, cheddar, lettuce, tomato, onions and chipotle mayo.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344017",
+        "name": "Millennium Wrap",
+        "description": "Beef burger, american cheese, fries, lettuce, tomato and bbq sauce.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344019",
+        "name": "Tuna Wrap",
+        "description": "With lettuce, tomato and mayonnaise.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344020",
+        "name": "Turkey Club Wrap",
+        "description": "Fresh turkey with lettuce, tomato and bacon.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11344021",
+        "name": "Philadelphia Wrap",
+        "description": "Philly cheese steak with grilled onions and peppers with barbeque sauce.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344023",
+        "name": "Greek Wrap",
+        "description": "Grilled chicken, lettuce, tomato, onion, and tzatziki sauce.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344024",
+        "name": "Slim Line Wrap",
+        "description": "Falafel with lettuce, tomato, onion and tzatziki sauce.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344025",
+        "name": "America's Wrap",
+        "description": "Chicken, cheddar cheese, onions, french fries, hot sauce and BBQ sauce.",
+        "basePrice": 7.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a75d6d993ddae01c84e41ee9406039e889",
+    "name": "Paninis",
+    "items": [
+      {
+        "apiKey": "11344026",
+        "name": "Tuscan Panini",
+        "description": "Fresh Mozzarella, plum tomatoes, fresh spinach and fresh basil with sun-dried tomato spread.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344027",
+        "name": "Ham Vera Cruz Panini",
+        "description": "Ham, swiss cheese, lettuce, tomatoes and honey mustard.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344028",
+        "name": "Old Fashioned Tuna Melt Panini",
+        "description": "Fresh tuna salad, lettuce, tomato and american cheese.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344029",
+        "name": "Turkey Delight Panini",
+        "description": "Fresh turkey, swiss cheese, lettuce, tomato and honey mustard.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344030",
+        "name": "Vegetarian Bite Panini",
+        "description": "Grilled fresh vegetables, fresh mozzarella, and sun-dried tomato spread.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344031",
+        "name": "Chicken Romano Panini",
+        "description": "Grilled chicken, fresh mozzarella, roasted peppers and pesto sauce.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344032",
+        "name": "Chicken Fajita Panini",
+        "description": "Grilled chicken, grilled peppers and onions with cheddar and salsa.",
+        "basePrice": 7.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a777ca1fd666fa88bbe41ee9406039e889",
+    "name": "Specialties",
+    "description": "Choice of rice or fries with platter.",
+    "items": [
+      {
+        "apiKey": "11344033",
+        "name": "Greek Gyro - Platter",
+        "description": "On pita with tomato, onion, fries and tzatziki sauce.  Choice of platter or regular.",
+        "basePrice": 9.99
+      },
+      {
+        "apiKey": "11344034",
+        "name": "Greek Gyro - Regular",
+        "description": "On pita with tomato, onion, fries and tzatziki sauce.  Choice of platter or regular.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344035",
+        "name": "Chicken Gyro - Regular",
+        "description": "On pita with lettuce, tomato, onion, fries and tzatziki sauce.  Choice of regular or platter.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344036",
+        "name": "Chicken Gyro - Platter",
+        "description": "On pita with lettuce, tomato, onion, fries and tzatziki sauce.  Choice of regular or platter.",
+        "basePrice": 9.99
+      },
+      {
+        "apiKey": "11344038",
+        "name": "Falafel - Regular",
+        "description": "On pita with lettuce, tomato, onion, and tzatziki sauce.  Choice of regular or platter.",
+        "basePrice": 5.95
+      },
+      {
+        "apiKey": "11344039",
+        "name": "Falafel - Platter",
+        "description": "On pita with lettuce, tomato, onion, and tzatziki sauce.  Choice of regular or platter.",
+        "basePrice": 7.99
+      },
+      {
+        "apiKey": "11344040",
+        "name": "Grilled Chicken - Regular",
+        "description": "  Choice of regular or platter.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344041",
+        "name": "Grilled Chicken - Platter",
+        "description": "  Choice of regular or platter.",
+        "basePrice": 9.99
+      },
+      {
+        "apiKey": "11344042",
+        "name": "Panko Chicken Fingers - Regular",
+        "description": "  Choice of regular or platter.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344043",
+        "name": "Panko Chicken Fingers - Platter",
+        "description": "  Choice of regular or platter.",
+        "basePrice": 9.99
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a72aa332b0f1897848e41ee9406039e889",
+    "name": "South of the Border",
+    "description": "Add avocado or guacamole for extra.",
+    "items": [
+      {
+        "apiKey": "11344045",
+        "name": "Guacamole and Chips",
+        "basePrice": 5.95
+      },
+      {
+        "apiKey": "11344046",
+        "name": "Quesadillas",
+        "description": "Chicken or steak, cheddar cheese, peppers, onions, salsa and sour cream.",
+        "basePrice": 7.95
+      },
+      {
+        "apiKey": "11344047",
+        "name": "Burritos",
+        "description": "Chicken or steak, lettuce, rice, beans, sour cream, salsa and pico de gallo.",
+        "basePrice": 8.95
+      },
+      {
+        "apiKey": "11344049",
+        "name": "America's Chicken or Steak (South of the Border Special)",
+        "description": "With broccoli, beans, onions, corn, cheddar, BBQ sauce, and sour cream.",
+        "basePrice": 8.95
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7efab45fdfc538f40e41ee9406039e889",
+    "name": "Extra Stuffed Heros",
+    "items": [
+      {
+        "apiKey": "11344052",
+        "name": "America's Stuffed Hero",
+        "description": "Chicken with onions, cheddar cheese, fries, hot sauce, and BBQ sauce.",
+        "basePrice": 8.99
+      },
+      {
+        "apiKey": "11344054",
+        "name": "Italian Chicken Stuffed Hero",
+        "description": "With fresh mozzarella, onions, roasted peppers and balsamic vinegar.",
+        "basePrice": 8.99
+      },
+      {
+        "apiKey": "11344055",
+        "name": "Turkey Stuffed Hero",
+        "description": "With lettuce and tomato.",
+        "basePrice": 8.99
+      },
+      {
+        "apiKey": "11344057",
+        "name": "Philly Cheese Steak Stuffed Hero",
+        "description": "With grilled onions and peppers.",
+        "basePrice": 8.99
+      },
+      {
+        "apiKey": "11344058",
+        "name": "Tuna Stuffed Hero",
+        "description": "With lettuce and tomato.",
+        "basePrice": 8.99
+      },
+      {
+        "apiKey": "11344060",
+        "name": "Grilled Chicken Stuffed Hero",
+        "description": "With lettuce and tomato.",
+        "basePrice": 8.99
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a79f6a1f20ca45c268e41ee9406039e889",
+    "name": "Idaho Famous Stuffed Baked Potatoes",
+    "items": [
+      {
+        "apiKey": "11344061",
+        "name": "Plain Baked Potato",
+        "basePrice": 4.95
+      },
+      {
+        "apiKey": "11344062",
+        "name": "Stuffed Baked Potato",
+        "basePrice": 6.45
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7d68a7907a00f3f7fe41ee9406039e889",
+    "name": "Hot Beverages",
+    "items": [
+      {
+        "apiKey": "11344064",
+        "name": "Lavazza Dark Roast Blend - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.1
+      },
+      {
+        "apiKey": "11344065",
+        "name": "Lavazza Dark Roast Blend - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.65
+      },
+      {
+        "apiKey": "11344067",
+        "name": "House Blend - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.4
+      },
+      {
+        "apiKey": "11344068",
+        "name": "House Blend - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.8
+      },
+      {
+        "apiKey": "11344069",
+        "name": "Decaf Coffee - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.75
+      },
+      {
+        "apiKey": "11344070",
+        "name": "Decaf Coffee - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.99
+      },
+      {
+        "apiKey": "11344071",
+        "name": "Hot Chocolate - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.75
+      },
+      {
+        "apiKey": "11344072",
+        "name": "Hot Chocolate - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.99
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7a9de83b2402090fbe41ee9406039e889",
+    "name": "Espresso",
+    "items": [
+      {
+        "apiKey": "11344073",
+        "name": "Lavazza Espresso - 1x",
+        "description": "  Choice of 1x or 2x.",
+        "basePrice": 2.75
+      },
+      {
+        "apiKey": "11344074",
+        "name": "Lavazza Espresso - 2x",
+        "description": "  Choice of 1x or 2x.",
+        "basePrice": 3.7
+      },
+      {
+        "apiKey": "11344075",
+        "name": "Cappuccino",
+        "basePrice": 3.7
+      },
+      {
+        "apiKey": "11344076",
+        "name": "Cafe Latte",
+        "basePrice": 3.7
+      },
+      {
+        "apiKey": "11344077",
+        "name": "Cafe Americano",
+        "basePrice": 3.7
+      },
+      {
+        "apiKey": "11344078",
+        "name": "Red Eye Espresso",
+        "basePrice": 3.7
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7d9208b9d48f1fef8e41ee9406039e889",
+    "name": "Cold Beverages",
+    "items": [
+      {
+        "apiKey": "11344080",
+        "name": "Iced Coffee - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.3
+      },
+      {
+        "apiKey": "11344081",
+        "name": "Iced Coffee - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 3.25
+      },
+      {
+        "apiKey": "11344083",
+        "name": "Lavazza Freddo Espresso",
+        "basePrice": 4.35
+      },
+      {
+        "apiKey": "11344084",
+        "name": "Lavazza Freddo Cappuccino",
+        "basePrice": 4.35
+      },
+      {
+        "apiKey": "11344085",
+        "name": "Frappe",
+        "basePrice": 3.7
+      },
+      {
+        "apiKey": "11344086",
+        "name": "Unsweetened Iced Tea - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.3
+      },
+      {
+        "apiKey": "11344088",
+        "name": "Unsweetened Iced Tea - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 3.25
+      },
+      {
+        "apiKey": "11344089",
+        "name": "Unsweetened Iced Green Tea - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.5
+      },
+      {
+        "apiKey": "11344090",
+        "name": "Unsweetened Iced Green Tea - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 3.45
+      },
+      {
+        "apiKey": "11344091",
+        "name": "Fresh Homemade Lemonade - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.3
+      },
+      {
+        "apiKey": "11344092",
+        "name": "Fresh Homemade Lemonade - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 3.25
+      },
+      {
+        "apiKey": "11344093",
+        "name": "Frozen Hot Chocolate",
+        "basePrice": 2.5
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7bcfc330290bbd37ae41ee9406039e889",
+    "name": "Tea",
+    "items": [
+      {
+        "apiKey": "11344094",
+        "name": "Lipton Tea - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.4
+      },
+      {
+        "apiKey": "11344097",
+        "name": "Lipton Tea - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 1.8
+      },
+      {
+        "apiKey": "11344098",
+        "name": "Mighty Leaf Tea - Small",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.1
+      },
+      {
+        "apiKey": "11344100",
+        "name": "Mighty Leaf Tea - Large",
+        "description": "  Choice of small or large.",
+        "basePrice": 2.5
+      }
+    ]
+  },
+  {
+    "apiKey": "51c47b6bde7dfbebfdb3aba31c19a8a7cfa620f2b7d6c651e41ee9406039e889",
+    "name": "Beverages",
+    "items": [
+      {
+        "apiKey": "11344104",
+        "name": "Poland Spring Water",
+        "basePrice": 1.4
+      },
+      {
+        "apiKey": "11344105",
+        "name": "Soda",
+        "basePrice": 1.4
+      },
+      {
+        "apiKey": "11344107",
+        "name": "Iced Tea",
+        "basePrice": 1.4
+      },
+      {
+        "apiKey": "11344108",
+        "name": "Pellegrino",
+        "basePrice": 2.5
+      }
+    ]
+  }
+]
