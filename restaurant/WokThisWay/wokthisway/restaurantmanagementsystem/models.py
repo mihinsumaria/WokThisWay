@@ -1,4 +1,4 @@
-from django.db import model
+from django.db import models
 class Food(models.Model):
     course= models.CharField(max_length = 50)
     cuisine= models.CharField(max_length = 50)
