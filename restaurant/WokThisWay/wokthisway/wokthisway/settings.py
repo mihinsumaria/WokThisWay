@@ -76,12 +76,8 @@ WSGI_APPLICATION = 'wokthisway.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'ORCL',
-        'USER':'mssumaria',
-        'PASSWORD': 'MSSUMARIA',
-        'HOST':'oracle.wpi.edu',
-        'PORT':'1521'           
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
     }
 }
 
