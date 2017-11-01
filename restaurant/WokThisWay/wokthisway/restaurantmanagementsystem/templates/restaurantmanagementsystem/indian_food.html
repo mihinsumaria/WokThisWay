@@ -1,0 +1,9 @@
+<html>
+<h1> PLEASE SELECT THE INDIAN FOOD YOU WOULD LIKE TO HAVE </h1>
+{% for beverage in indain_food_list %}
+  <input type = "checkbox" id = "{{beverage.ID}}" name = "beverage" value ="{{beverage.id}}">
+  <label for = "{{beverage.ID}}">
+    {{beverage.name}} -- $ {{beverage.price}}
+  </label><br>
+{% endfor %}
+</html>
