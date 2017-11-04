@@ -42,3 +42,6 @@ class Order(models.Model):
     status = models.CharField(max_length = 100)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT,)
     food = models.ManyToManyField(Food, verbose_name="Food items", )
+
+#Add quantity for relation between food and Order
+# timestamp for order
