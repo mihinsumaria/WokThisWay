@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 # Create your models here.
 class Food(models.Model):
 	ID=models.BigIntegerField(primary_key=True)
@@ -37,11 +38,14 @@ class Manager(models.Model):
         return self.name
 
 class Order(models.Model):
-    ID = models.AutoField(primary_key = True)
+    OrderID = models.IntegerField()
     table_id= models.IntegerField()
     status = models.CharField(max_length = 100)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT,)
-    food = models.ManyToManyField(Food, verbose_name="Food items", )
-
+    food = models.ForeignKey(Food, on_delete=models.PROTECT, )
+    timestamp = models.DateTimeField(default=timezone.now)
+    quantity = models.IntegerField(default=1)
+    class Meta:
+        unique_together=(('OrderID','food'),)
 #Add quantity for relation between food and Order
 # timestamp for order
