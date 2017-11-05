@@ -3,5 +3,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^menu/', include('restaurantmanagementsystem.urls')),
+    url(r'', include('restaurantmanagementsystem.urls')),
 ]

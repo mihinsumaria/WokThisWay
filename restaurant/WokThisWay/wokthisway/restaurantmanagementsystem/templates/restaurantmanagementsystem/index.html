@@ -1,6 +1,146 @@
-<html>
-<h1>
-  Hello
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    body {
+  background: url("home.jpg") no-repeat center center fixed;
 
+-webkit-background
+-size: cover;
+
+-moz-background-size: cover;
+
+-o-background-size: cover;
+
+background-size: cover;
+}
+
+    .white{
+      color:#ffffff;
+    }
+    .main{
+      padding-top: 100px;
+    }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 300px
+    }
+
+    .row.content a.buttonhover
+    {
+      color:#000000;
+    }
+
+    .row.content a.buttonhover:hover
+    {
+      color:#c0c0c0;
+    }
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    .glyphicon{
+      font-size: 30px;
+    }
+
+    .border-right{
+      padding-right: 20px;
+      /*border-right: 1px solid #ccc;*/
+      padding-bottom: 300px;
+    }
+
+    .backgroundimage{
+      background-image: url("/home.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100% auto;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">WokThisWay</a>
+    </div>
+    <!--<div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Register </a></li>
+      </ul>
+    </div>-->
+  </div>
+</nav>
+
+<div class="container-fluid text-center backgroundimage">
+  <div class="row content text-center main">
+    <h1 class="white">WokThisWay</h1>
+    <h2 class="white">Login or Continue as guest!</h2>
+  </div>
+  <div class="row content">
+    <a class="buttonhover" href="{% url 'login_page' %}"><div class="col-sm-6 text-center border-right">
+      <h2>Login to your account!</h2>
+      <span class="glyphicon glyphicon-user"></span>
+      <!--<hr>-->
+      <!--<h3>Test</h3>-->
+      <!--<p>Lorem ipsum...</p>-->
+    </div>
+    <a class="buttonhover" href="{% url 'guest_menu_page' %}"><div class="col-sm-6 text-center">
+      <h2>Continue as Guest</h2>
+      <span class="glyphicon glyphicon-log-in"></span>
+    </div></a>
+      <h3><a href = "{% url 'register' %}">Register</a><h3>
+  </div>
+
+</div>
+
+<div class="navbar navbar-fixed-bottom">
+  <footer class="container-fluid text-center">
+    <p>WokThisWay LLC</p>
+  </footer>
+</div>
+</body>
 </html>
