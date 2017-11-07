@@ -26,4 +26,7 @@ urlpatterns = [
     url(r'^menu/$',views.guest_menu_page, name = 'guest_menu_page'),
 
     url(r'^register/$',views.register, name = 'register'),
+
+    url(r'^test/$',views.test, name = 'test'),
+
 ]

@@ -160,35 +160,9 @@ input[type="checkbox"]{
 <div class="container" text-align:center>
 
 <div class="row">
-  <!--<div class="col-md-4">
 
-
-<div class="dropdown1">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Course
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Appetizer</a></li>
-      <li><a href="#">Beverage</a></li>
-      <li><a href="#">Breakfast</a></li>
-      <li><a href="#">Desert</a></li>
-	  <li><a href="#">Main Course</a></li>
-    </ul>
-  </div></div> -->
   <div class="col-md-4">
-<!--  <div class="dropdown2">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Cuisine
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Beverage</a></li>
-      <li><a href="#">Indian</a></li>z
-      <li><a href="#">American</a></li>
 
-      <li><a href="#">Chinese</a></li>
-	  <li><a href="#">Desert</a></li>
-
-    </ul>
-	<br>
-</div> -->
 <div class="container">
   <div class="dropdown">
     <button class="dropbtn">Filter
@@ -228,38 +202,14 @@ input[type="checkbox"]{
 
   </div>
 
-  <!-- <div class="col-md-4">
-  <div class="dropdown3">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Price
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Coffee</a></li>
-      <li><a href="#">Tea</a></li>
-      <li><a href="#">Juice</a></li>
-	  <li><a href="#">Shake</a></li>
-	  <li><a href="#">Smoothie</a></li>
-	  <li><a href="#">Soda</a></li>
-      <li><a href="#">Water</a></li>
-      <li><a href="#">Veg</a></li>
-	  <li><a href="#">Non-Veg</a></li>
-	  <li><a href="#">Non-Veg Rice</a></li>
-	  <li><a href="#">Roti</a></li>
-    </ul>
-
-  </div>
-</div> -->
-
-
-
   </div>
   <br><br>
 <div class="row">
-  <!--<h2>Table</h2>
-  //<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>
-  -->
 
 
   <div class="col-sm-8">
+    <form action="{% url 'test'%}" method="POST">
+        {% csrf_token %}
   <div class="table-responsive">
   <table class="table table-hover">
     <thead class="thead-inverse">
@@ -286,102 +236,17 @@ input[type="checkbox"]{
         <td>{{food.course}}</td>
         <td>{{food.cuisine}}</td>
         <td>{{food.category}}</td>
-		<td class="vcenter"><input type="checkbox" id="1" value="1"/></td>
+		<td class="vcenter"><input type="checkbox" name = "food" id="{{food.ID}}" value= "{{food.ID}}"/></td>
 		<td>
 
-		<div class="input-group spinner">
-    <input type="text" class="form-control" value="" min="0" max="5">
-    <div class="input-group-btn-vertical">
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-    </div>
-  </div>
+
+    <input type="number" class="form-control" name = "quantity" id="{{food.ID}}"  min="0" max="5">
+
 		</td>
       </tr>
       {%endfor%}
-	  <!--
-	   <tr>
-        <td>2</td>
-        <td>Vanilla	<br> Vanilla Shake with with Chocolate Syrup</td>
-        <td>6</td>
-        <td>Beverage</td>
-        <td>Beverage</td>
-        <td>Shake</td>
-		<td class="vcenter"><input type="checkbox" id="2" value="1"/></td>
-		<td>
+    <button type="submit" class="btn btn-default btn-lg">Order</button>
 
-		<div class="input-group spinner">
-    <input type="text" class="form-control" value="" min="0" max="5">
-    <div class="input-group-btn-vertical">
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-    </div>
-  </div>
-		</td>
-      </tr>
-
-	   <tr>
-        <td>3</td>
-        <td>Chocolate<br>	Chocolate Shake with Chocolate Chips
-		</td>
-        <td>6</td>
-        <td>Beverage</td>
-        <td>Beverage</td>
-        <td>Shake</td>
-		<td class="vcenter"><input type="checkbox" id="3" value="1"/></td>
-		<td>
-
-		<div class="input-group spinner">
-    <input type="text" class="form-control" value="" min="0" max="5">
-    <div class="input-group-btn-vertical">
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-    </div>
-  </div>
-		</td>
-      </tr>
-
-	   <tr>
-        <td>4</td>
-        <td>Tropical Smoothie<br>	Strawberry, banana and pineapple Smoothie</td>
-        <td>5</td>
-        <td>Beverage</td>
-        <td>Beverage</td>
-        <td>Smoothie</td>
-		<td class="vcenter"><input type="checkbox" id="4" value="1"/></td>
-		<td>
-
-		<div class="input-group spinner">
-    <input type="text" class="form-control" value="" min="0" max="5">
-    <div class="input-group-btn-vertical">
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-    </div>
-  </div>
-		</td>
-      </tr>
-
-	  <tr>
-	  <td>5</td>
-	  <td>Chicken Tikka Masala<br>
-	  Chunks of white meat chicken marinated in a heavenly tomato based yogurt gravy. Served with rice.
-		</td>
-		<td>12.99</td>
-		<td>Main Course</td>
-		<td>Indian</td>
-		<td>Non-veg</td>
-		<td class="vcenter"><input type="checkbox" id="5" value="1"/></td>
-		<td>
-
-		<div class="input-group spinner">
-    <input type="text" class="form-control" value="" min="0" max="5">
-    <div class="input-group-btn-vertical">
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-    </div>
-  </div>
-		</td>
-		</tr>-->
 
     {%else%}
     <h2>NO ITEM TO SHOW<h2>
@@ -389,7 +254,7 @@ input[type="checkbox"]{
 
     </tbody>
   </table>
-  </div></div>
+</div></form></div>
 
   <div class="col-sm-4">
   <div class="table-responsive">
@@ -405,7 +270,7 @@ input[type="checkbox"]{
   </div>
 </div>
 <br>
-<div class="row">
+<!--<div class="row">
 	<div class="col-sm-6" text-align:center>
 	</div>
 	<div class="col-sm-6" text-align:center>
@@ -413,7 +278,7 @@ input[type="checkbox"]{
 	<button type="button" class="btn btn-default btn-lg">Submit</button>
   {%endif%}
 	</div>
-</div>
+</div> -->
 </div>
 <script>
 $(document).ready(function(){

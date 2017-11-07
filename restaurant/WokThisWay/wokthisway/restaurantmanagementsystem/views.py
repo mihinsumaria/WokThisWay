@@ -1,7 +1,22 @@
 from django.shortcuts import render
 from .models import Food
+from django.db.models import Sum
 
-# Create your views here.
+# Create your views here
+
+def test(request):
+    foods = request.POST.getlist("food")
+    price =[]
+    i=0
+    for id in foods:
+         price[i,1] = Food.objects.filter(ID = id).values('price')
+         i = i+1
+    print(price)
+    qty = request.POST.getlist("quantity")
+    while '' in qty:
+        qty.remove('')
+    return render(request,'restaurantmanagementsystem/test.html',{'foods':foods, 'qty': qty})
+
 
 def index(request):
     return render(request,'restaurantmanagementsystem/index.html',)
