@@ -293,12 +293,14 @@ input[type="checkbox"]{
   </tr>
   {%endfor%}
   <tr><button type="submit" name = "order" >Order</button>
-    <button type="submit" name = "remove" >Remove</button></tr>
+    <button type="submit" name = "remove" >Remove</button> </tr>
     </tbody>
     {%else%}
     <h3>No Items Added to Cart<h3>
     {%endif%}
+
     </table>
+    <h3>Total Bill : $ {{bill}}<h3>
 
 
   </div>

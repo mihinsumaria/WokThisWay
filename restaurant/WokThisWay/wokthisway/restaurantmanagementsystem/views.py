@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Food, Order
+from .models import Food
 from django.db.models import Sum
 
 # Create your views here
@@ -17,43 +17,29 @@ class Cart:
     def get_id(self):
         return self.id
 
-    def set_id(self,id):
-        self.id = id
-        return
-
     def get_name(self):
         return self.name
-
-    def set_name(self,name):
-        self.name = name
-        return
 
     def get_qty(self):
         return self.qty
 
-    def set_qty(self,qty):
-        self.qty = qty
-        return
-
     def get_price(self):
         return self.price
 
-    def set_price(self,price):
-        self.price = price
-        return
 
 # test function gives error while adding all
 cart = []
-total=0
 
 
-def get_index(cart,id):
-    for index, item in enumerate(cart):
-        if (item.get_id == id):
-            print(item.get_id)
-            return index
+def total_bill():
+    global cart
+    totalprice =0
+    for item in cart:
+        totalprice += item.get_price()
+    return totalprice
 
 
+# function Just For Test. Needs to be deleted Later
 def test(request):
     foods = request.POST.getlist("food")
     price =[]
@@ -74,21 +60,21 @@ def add_to_cart(request):
     while '' in qty:            # removes unchecked items
         qty.remove('')
     for position,food in enumerate(foods):
-        #print(Food.objects.filter(ID = food),qty[position])
         name = Food.objects.values_list('name', flat = True).get(ID = food)
         price = (Food.objects.values_list('price', flat = True).get(ID = food))*float(qty[position])
         cart.append(Cart(food,name,qty[position],price))
-    #print("value "+ str(cart[len(cart)-1].get_id()))
     lastItem = cart[len(cart)-1].get_id()
     cuisine = Food.objects.values_list('cuisine', flat = True).get(ID = lastItem)
     food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
     food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def cart_transaction(request):
     print("here")
     global cart
     if request.POST:
+        # IF THE REMOVE BUTTON PRESSED
         if 'remove' in request.POST:
             print ("remove")
             foods = request.POST.getlist("remove_check")
@@ -105,47 +91,56 @@ def cart_transaction(request):
                 cuisine = Food.objects.values_list('cuisine', flat = True).get(ID = lastItem)
                 food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
                 food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
+                bill = total_bill()
             else:
                 food_list={}
-            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+                bill =0
+            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
+        #IF ORDER bUTTON PRESSED , TO BE IMPLEMENTED
         elif 'order' in request.POST:
                 lastItem = cart[len(cart)-1].get_id()
                 cuisine = Food.objects.values_list('cuisine', flat = True).get(ID = lastItem)
                 food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
                 food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
-                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+                bill = total_bill()
+                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 
 
-
+#ONLY FOR TEST. NEEDS TO BE DELETED LATER
 def index(request):
     return render(request,'restaurantmanagementsystem/index.html',)
 
 def beverage_menu(request):
     global cart
     food_list = Food.objects.filter(cuisine = 'Beverage')
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def indian_menu(request,food_course):
     global cart
     food_list = Food.objects.filter(cuisine = 'Indian', course = food_course)
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def chinese_menu(request,food_course):
     global cart
     food_list = Food.objects.filter(cuisine = 'Chinese', course = food_course)
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def american_menu(request,food_course):
     global cart
     food_list = Food.objects.filter(cuisine = 'American', course = food_course)
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def dessert(request):
     global cart
     food_list = Food.objects.filter(cuisine = 'Dessert')
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart})
+    bill = total_bill()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
 def login_page(request):
     return render(request,'restaurantmanagementsystem/login_page.html')
