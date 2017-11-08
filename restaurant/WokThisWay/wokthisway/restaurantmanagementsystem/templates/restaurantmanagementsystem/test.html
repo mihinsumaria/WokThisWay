@@ -1,6 +1,8 @@
 <html>
+{% for item in cart %}
 <h1>
-  Hello {{foods}} ----{{qty}}
+   {{item.get_id}} ----{{item.get_name}}
 </h1>
+{%endfor%}
 
 </html>

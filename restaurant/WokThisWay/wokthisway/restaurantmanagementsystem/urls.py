@@ -27,6 +27,8 @@ urlpatterns = [
 
     url(r'^register/$',views.register, name = 'register'),
 
-    url(r'^test/$',views.test, name = 'test'),
+    url(r'^orderStart/$',views.add_to_cart, name = 'add_to_cart'),
+
+    url(r'^orderTrans/$',views.cart_transaction, name = 'cart_transaction'),
 
 ]

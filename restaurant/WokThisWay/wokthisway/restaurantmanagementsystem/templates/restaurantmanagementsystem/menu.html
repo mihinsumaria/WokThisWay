@@ -208,8 +208,9 @@ input[type="checkbox"]{
 
 
   <div class="col-sm-8">
-    <form action="{% url 'test'%}" method="POST">
+    <form action="{% url 'add_to_cart'%}" method="POST">
         {% csrf_token %}
+
   <div class="table-responsive">
   <table class="table table-hover">
     <thead class="thead-inverse">
@@ -245,7 +246,7 @@ input[type="checkbox"]{
 		</td>
       </tr>
       {%endfor%}
-    <button type="submit" class="btn btn-default btn-lg">Order</button>
+    <button type="submit" class="btn btn-default btn-lg">Add to Cart</button>
 
 
     {%else%}
@@ -268,10 +269,14 @@ input[type="checkbox"]{
 
   </div>
   <h3>Cart</h3>
+  <form action="{% url 'cart_transaction'%}" method="POST">
+      {% csrf_token %}
   <div class="table-responsive">
   <table class="table table-hover">
+    {%if cart%}
     <thead>
       <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
@@ -279,16 +284,25 @@ input[type="checkbox"]{
       </tr>
     </thead>
     <tbody>
-    <tr><td>Tropical Smoothie</td>
-    <td>3</td>
-    <td>10</td>
-    <td><input type="checkbox" name = "" id="" value= ""/></td>
+      {%for item in cart%}
+    <tr><td>{{item.get_id}}</td>
+      <td>{{item.get_name}}</td>
+    <td>{{item.get_qty}}</td>
+    <td>{{item.get_price}}</td>
+    <td><input type="checkbox" name = "remove_check" id="" value= "{{item.get_id}}"/></td>
   </tr>
+  {%endfor%}
+  <tr><button type="submit" name = "order" >Order</button>
+    <button type="submit" name = "remove" >Remove</button></tr>
     </tbody>
+    {%else%}
+    <h3>No Items Added to Cart<h3>
+    {%endif%}
     </table>
 
 
   </div>
+</form>
 
   </div>
 </div>
