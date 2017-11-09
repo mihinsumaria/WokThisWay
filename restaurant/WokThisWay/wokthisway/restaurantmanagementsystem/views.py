@@ -5,8 +5,6 @@ from django.db.models import Sum
 # Create your views here
 
 class Cart:
-    def __inti__(self):
-        pass
 
     def __init__(self, id,name,qty,price):
         self.id = id
