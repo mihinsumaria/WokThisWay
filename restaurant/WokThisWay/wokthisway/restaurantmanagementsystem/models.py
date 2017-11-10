@@ -14,14 +14,14 @@ class Food(models.Model):
 		return self.name
 
 class Customer(models.Model):
-    ID =  models.BigIntegerField(primary_key=True)
+    #ID =  models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=300)
     def __str__(self):
         return self.name
 
 class Cashier(models.Model):
-    ID =  models.BigIntegerField(primary_key=True)
+    #ID =  models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=300)
 
@@ -30,7 +30,7 @@ class Cashier(models.Model):
 
 
 class Manager(models.Model):
-    ID =  models.BigIntegerField(primary_key=True)
+    #ID =  models.BigIntegerField(primary_key=True)
     name= models.CharField(max_length=50)
     password = models.CharField(max_length=300)
 
