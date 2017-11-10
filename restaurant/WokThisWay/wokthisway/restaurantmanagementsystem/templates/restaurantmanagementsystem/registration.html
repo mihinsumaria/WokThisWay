@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login page</title>
+  <title>Registration page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,18 +9,85 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-  background: url("1.jpg") no-repeat center center fixed;
-
+  {% load staticfiles %}
+  background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
+  
 -webkit-background
 -size: cover;
-
+  
 -moz-background-size: cover;
-
+  
 -o-background-size: cover;
-
+  
 background-size: cover;
-
 }
+
+    .white{
+      color:#ffffff;
+    }
+    .main{
+      padding-top: 100px;
+    } 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 300px 
+    }
+
+    .row.content a.buttonhover
+    {
+      color:#ffffff;
+    }
+
+    .row.content a.buttonhover:hover
+    {
+      color:#c0c0c0;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /*.glyphicon{
+      font-size: 30px;
+    }*/
+
+    .border-right{
+      padding-right: 20px;
+      /*border-right: 1px solid #ccc;*/
+      padding-bottom: 300px; 
+    }
+
+    .backgroundimage{
+      /*{% load staticfiles %}
+      background-image: url("{% static "images/home.jpg" %}");*/
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100% auto;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
 /*h1{color:white}
 p{color:white}*/
 .panel
@@ -34,37 +101,34 @@ margin-top:30px;
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WokThisWay</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}">WokThisWay</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="Login_temp.html">Home</a></li>
-      <li><a href="Login_temp.html">Login</a></li>
-      <li><a href="Order.html">Order</a></li>
-      <li><a href="Menu.html">Menu</a></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'login_page' %}"><span class="glyphicon glyphicon-user"></span> Login </a></li>
+      </ul>
+    </div>
   </div>
 </nav>
-<div class="container">
-  <h1>Wok this Way!</h1>
-  <p>One stop solution for quick meals..</p>
+
+<div class="container-fluid text-center backgroundimage">
+  <div class="row content text-center main white">
+  <h1>Wok this Way Login Page!</h1>
+  <p>One stop solution for quick meals</p>
   <p>Easy ordering and take away system</p>
 </div>
 
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          {% if registered == 1 %}
-            <p> Account Created <a href="{% url 'login_page' %}">Login here!</a></p>
-          {% endif %}
-          {% if registered == 2 %}  
-            <p> The two passwords do not match</p>
-          {% endif %}
-          {% if registered == 3 %}  
-            <p> Username already exists</p>
-          {% endif %}
+        <div class="col-md-4 col-md-offset-4">
+
           <!---->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -87,11 +151,26 @@ margin-top:30px;
                         </div>
                     </div>
                     </form>
-                <!--</div>
+                <!--</div>-->
                 <div class="panel-footer">
-                    Not Registered? <a href="#">Register here</a></div>
-            </div>-->
+              {% if registered == 1 %}
+            <p style="color:green"> Account Created <a href="{% url 'login_page' %}">Login here!</a></p>
+          {% endif %}
+          {% if registered == 2 %}  
+            <p style="color:red"> The two passwords do not match</p>
+          {% endif %}
+          {% if registered == 3 %}  
+            <p style="color:red"> Username already exists</p>
+          {% endif %}</div>
+            </div>
         </div>
     </div>
-</div></body>
+</div>
+<div class="navbar navbar-fixed-bottom">
+  <footer class="container-fluid text-center">
+    <p>WokThisWay LLC</p>
+  </footer>
+</div>
+
+</body>
 </html>
