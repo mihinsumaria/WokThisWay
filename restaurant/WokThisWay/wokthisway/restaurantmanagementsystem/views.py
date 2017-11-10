@@ -39,20 +39,8 @@ def total_bill():
 
 
 # function Just For Test. Needs to be deleted Later
-def test(request):
-    foods = request.POST.getlist("food")
-    price =[]
-    i=0
-    for id in foods:
-         price[i,1] = Food.objects.filter(ID = id).values('price')
-         i = i+1
-    print(price)
-    qty = request.POST.getlist("quantity")
-    while '' in qty:
-        qty.remove('')
-    return render(request,'restaurantmanagementsystem/test.html',{'foods':foods, 'qty': qty})
-
 def add_to_cart(request):
+    username=request.session['username']
     global cart
     foods = request.POST.getlist("food")
     qty = request.POST.getlist("quantity")
@@ -67,10 +55,10 @@ def add_to_cart(request):
     food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
     food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def cart_transaction(request):
-    print("here")
+    username=request.session['username']
     global cart
     if request.POST:
         # IF THE REMOVE BUTTON PRESSED
@@ -103,7 +91,7 @@ def cart_transaction(request):
                 food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
                 food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
                 bill = total_bill()
-                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 
 
@@ -114,34 +102,39 @@ def index(request):
     return render(request,'restaurantmanagementsystem/index.html',)
 
 def beverage_menu(request):
+    username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Beverage')
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def indian_menu(request,food_course):
+    username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Indian', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def chinese_menu(request,food_course):
+    username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Chinese', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def american_menu(request,food_course):
+    username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'American', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def dessert(request):
+    username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Dessert')
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
 def login_page(request,loggedin=0):
     loggedin=0
@@ -152,14 +145,16 @@ def login_page(request,loggedin=0):
         if form.is_valid():
             username=request.POST.get("name","")
             password=request.POST.get("password","")
-            dbpwd=Customer.objects.filter(name=username).values('password')[0]['password']
-            if(Customer.objects.filter(name=username) and password==dbpwd):
-                request.session['username']=username
-                food_list=[]
-                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+            if(Customer.objects.filter(name=username)):
+                if(password==Customer.objects.filter(name=username).values('password')[0]['password']):
+                    request.session['username']=username
+                    food_list=[]
+                    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+                else:
+                    loggedin=1
             else:
                 loggedin=1
-                return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
+            return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
     else:
         if(request.session.has_key('username')):
             food_list=[]
