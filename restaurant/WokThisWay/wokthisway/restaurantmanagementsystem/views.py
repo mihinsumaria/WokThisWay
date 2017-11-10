@@ -35,7 +35,7 @@ def total_bill():
     totalprice =0
     for item in cart:
         totalprice += item.get_price()
-    return totalprice
+    return "{0:.2f}".format(totalprice)
 
 
 # function Just For Test. Needs to be deleted Later
@@ -82,7 +82,7 @@ def cart_transaction(request):
             else:
                 food_list={}
                 bill =0
-            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
+            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
         #IF ORDER bUTTON PRESSED , TO BE IMPLEMENTED
         elif 'order' in request.POST:
@@ -167,7 +167,7 @@ def logout(request):
     return redirect(index)
 def menu_page(request):
     return render(request,'restaurantmanagementsystem/menu.html')
-    
+
 
 def guest_menu_page(request):
     if(request.session.has_key('username')):
@@ -195,8 +195,8 @@ def register(request,registered=0):
                 registered=3
             elif(fpassword!=fcpassword):
                 registered=2
-            
-            
+
+
         return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
 
     else:
