@@ -144,7 +144,11 @@ input[type="checkbox"]{
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'guest_menu_page' %}">Menu</a></li>
-      <li><a href="Orders.html">Order</a></li>
+      <li><a href="Orders.html">Orders</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li style="color:white">Logged in as: {{ username }}</li>
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>

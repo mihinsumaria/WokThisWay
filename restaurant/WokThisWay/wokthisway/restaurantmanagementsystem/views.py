@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from django.db.models import Sum
 from .forms import *
@@ -109,6 +109,8 @@ def cart_transaction(request):
 
 #ONLY FOR TEST. NEEDS TO BE DELETED LATER
 def index(request):
+    if(request.session.has_key('username')):
+        return redirect(guest_menu_page)
     return render(request,'restaurantmanagementsystem/index.html',)
 
 def beverage_menu(request):
@@ -141,20 +143,48 @@ def dessert(request):
     bill = total_bill()
     return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill})
 
-def login_page(request):
-    return render(request,'restaurantmanagementsystem/login_page.html')
+def login_page(request,loggedin=0):
+    loggedin=0
+    pwd=""
+    dbpwd=""
+    if request.method=='POST':
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            username=request.POST.get("name","")
+            password=request.POST.get("password","")
+            dbpwd=Customer.objects.filter(name=username).values('password')[0]['password']
+            if(Customer.objects.filter(name=username) and password==dbpwd):
+                request.session['username']=username
+                food_list=[]
+                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+            else:
+                loggedin=1
+                return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
+    else:
+        if(request.session.has_key('username')):
+            food_list=[]
+            return redirect(guest_menu_page)
+        form=LoginForm()
+    return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
 
+def logout(request):
+    del request.session['username']
+    return redirect(index)
 def menu_page(request):
-    username = request.POST.get('username')
-    if(username == 'vaseem'):
-        return render(request,'restaurantmanagementsystem/menu.html')
-    return render(request,'restaurantmanagementsystem/test.html')
+    return render(request,'restaurantmanagementsystem/menu.html')
+    
 
 def guest_menu_page(request):
-    food_list=[]
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list})
+    if(request.session.has_key('username')):
+        food_list=[]
+        username=request.session['username']
+        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+    else:
+        return redirect(login_page)
 
 def register(request,registered=0):
+    if(request.session.has_key('username')):
+        return redirect(guest_menu_page)
     fpassword=""
     fcpassword=""
     if(request.method=="POST"):
@@ -166,10 +196,11 @@ def register(request,registered=0):
                 registered=1
                 customer=form.save(commit=False)
                 customer.save()
+            elif(Customer.objects.filter(name=request.POST.get("name",""))):
+                registered=3
             elif(fpassword!=fcpassword):
                 registered=2
-            if(Customer.objects.filter(name=request.POST.get("name",""))):
-                registered=3
+            
             
         return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
 
