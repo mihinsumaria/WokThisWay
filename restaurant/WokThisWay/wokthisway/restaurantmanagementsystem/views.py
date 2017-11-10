@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Food
+from .models import *
 from django.db.models import Sum
+from .forms import *
 
 # Create your views here
 
@@ -153,5 +154,25 @@ def guest_menu_page(request):
     food_list=[]
     return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list})
 
-def register(request):
-    return render(request,'restaurantmanagementsystem/registration.html')
+def register(request,registered=0):
+    fpassword=""
+    fcpassword=""
+    if(request.method=="POST"):
+        form=RegisterForm(request.POST)
+        fpassword=request.POST.get("password","")
+        fcpassword=request.POST.get("confirmpassword","")
+        if form.is_valid():
+            if(fpassword==fcpassword and not Customer.objects.filter(name=request.POST.get("name",""))):
+                registered=1
+                customer=form.save(commit=False)
+                customer.save()
+            elif(fpassword!=fcpassword):
+                registered=2
+            if(Customer.objects.filter(name=request.POST.get("name",""))):
+                registered=3
+            
+        return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
+
+    else:
+        form = RegisterForm()
+        return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
