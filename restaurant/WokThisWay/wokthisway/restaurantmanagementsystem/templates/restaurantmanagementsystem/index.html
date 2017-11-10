@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>WokThisWay</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,16 +9,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
-    body {
-  background: url("home.jpg") no-repeat center center fixed;
-
+    body { 
+      {% load staticfiles %}
+  background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
+  
 -webkit-background
 -size: cover;
-
+  
 -moz-background-size: cover;
-
+  
 -o-background-size: cover;
-
+  
 background-size: cover;
 }
 
@@ -27,27 +28,27 @@ background-size: cover;
     }
     .main{
       padding-top: 100px;
-    }
+    } 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-
+    
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
-      height: 300px
+      height: 300px 
     }
 
     .row.content a.buttonhover
     {
-      color:#000000;
+      color:#ffffff;
     }
 
     .row.content a.buttonhover:hover
     {
       color:#c0c0c0;
     }
-
+    
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
@@ -62,32 +63,34 @@ background-size: cover;
     .border-right{
       padding-right: 20px;
       /*border-right: 1px solid #ccc;*/
-      padding-bottom: 300px;
+      padding-bottom: 300px; 
     }
 
     .backgroundimage{
-      background-image: url("/home.jpg");
+      /*{% load staticfiles %}
+      background-image: url("{% static "images/home.jpg" %}");*/
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 100% auto;
     }
-
+    
     /* Set black background color, white text and some padding */
     footer {
       background-color: #000000;
       color: white;
       padding: 15px;
     }
-
+    
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height:auto;}
+      .row.content {height:auto;} 
     }
   </style>
+
 </head>
 <body>
 
@@ -115,11 +118,11 @@ background-size: cover;
   </div>
 </nav>
 
-<div class="container-fluid text-center backgroundimage">
+<div class="container-fluid text-center backgroundimage"> 
   <div class="row content text-center main">
     <h1 class="white">WokThisWay</h1>
     <h2 class="white">Login or Continue as guest!</h2>
-  </div>
+  </div>   
   <div class="row content">
     <a class="buttonhover" href="{% url 'login_page' %}"><div class="col-sm-6 text-center border-right">
       <h2>Login to your account!</h2>
