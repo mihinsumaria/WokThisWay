@@ -38,14 +38,24 @@ class Manager(models.Model):
         return self.name
 
 class Order(models.Model):
-    OrderID = models.IntegerField()
-    table_id= models.IntegerField()
-    status = models.CharField(max_length = 100)
-    customer = models.ForeignKey(Customer, on_delete=models.PROTECT,)
-    food = models.ForeignKey(Food, on_delete=models.PROTECT, )
-    timestamp = models.DateTimeField(default=timezone.now)
-    quantity = models.IntegerField(default=1)
-    class Meta:
-        unique_together=(('OrderID','food'),)
+	OrderID = models.IntegerField()
+	table_id= models.IntegerField()
+	status = models.CharField(max_length = 100)
+	customer = models.ForeignKey(Customer, on_delete=models.PROTECT,)
+	food = models.ForeignKey(Food, on_delete=models.PROTECT, )
+	timestamp = models.DateTimeField(default=timezone.now)
+	quantity = models.IntegerField(default=1)
+	def __str__(self):
+		return str(self.OrderID)+" "+ str(self.customer)+ " "+ str(self.food)
+	class Meta:
+		unique_together=(('OrderID','food'),)
+
+class Table(models.Model):
+	table_id = models.IntegerField(primary_key = True)
+	status = models.IntegerField()
+
+	def __str__(self):
+		return str(self.table_id)
+
 #Add quantity for relation between food and Order
 # timestamp for order

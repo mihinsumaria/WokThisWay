@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.db.models import Max,Count
 from .models import *
 from django.db.models import Sum
 from .forms import *
@@ -7,11 +8,13 @@ from .forms import *
 
 class Cart:
 
-    def __init__(self, id,name,qty,price):
+    def __init__(self, id,name,qty,price,tableId):
         self.id = id
         self.name = name
         self.qty = qty
         self.price = price
+        self.tableId=tableId
+
 
     def get_id(self):
         return self.id
@@ -25,10 +28,22 @@ class Cart:
     def get_price(self):
         return self.price
 
+    def get_tableId(self):
+        return self.tableId
+
 
 # test function gives error while adding all
 cart = []
 
+
+
+def get_order_id():
+    if(Order.objects.all().aggregate(Count('OrderID'))['OrderID__count']!=0):
+        OrderID= Order.objects.all().aggregate(Max('OrderID'))['OrderID__max']
+        print(Order.objects.all().aggregate(Count('OrderID'))['OrderID__count'])
+    else:
+        OrderID=0
+    return OrderID
 
 def total_bill():
     global cart
@@ -44,12 +59,14 @@ def add_to_cart(request):
     global cart
     foods = request.POST.getlist("food")
     qty = request.POST.getlist("quantity")
+    tableId = request.POST.get("tableId")
+    print(tableId)
     while '' in qty:            # removes unchecked items
         qty.remove('')
     for position,food in enumerate(foods):
         name = Food.objects.values_list('name', flat = True).get(ID = food)
         price = (Food.objects.values_list('price', flat = True).get(ID = food))*float(qty[position])
-        cart.append(Cart(food,name,qty[position],price))
+        cart.append(Cart(food,name,qty[position],price,tableId))
     lastItem = cart[len(cart)-1].get_id()
     cuisine = Food.objects.values_list('cuisine', flat = True).get(ID = lastItem)
     food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
@@ -86,12 +103,25 @@ def cart_transaction(request):
 
         #IF ORDER bUTTON PRESSED , TO BE IMPLEMENTED
         elif 'order' in request.POST:
-                lastItem = cart[len(cart)-1].get_id()
-                cuisine = Food.objects.values_list('cuisine', flat = True).get(ID = lastItem)
-                food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
-                food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
-                bill = total_bill()
-                return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+
+                current_orderID = get_order_id() + 1
+                currentTable = cart[0].get_tableId()
+                table = Table.objects.get(table_id = currentTable)
+                table.status=1   # table status 0 - Unoccupied 1- Occupied
+                table.save()
+                for item in cart:
+                    order =Order()
+                    order.OrderID = current_orderID
+                    order.table_id = item.get_tableId()
+                    order.status = 0
+                    currentCustomer = Customer.objects.get(name = username)       # 0 - Order Pending 1- Order Done
+                    order.customer = currentCustomer
+                    currentFood = Food.objects.get(ID = item.get_id())
+                    order.food = currentFood
+                    order.quantity = item.get_qty()
+                    order.save()
+                cart.clear()
+                return render(request,'restaurantmanagementsystem/test.html',)
 
 
 
