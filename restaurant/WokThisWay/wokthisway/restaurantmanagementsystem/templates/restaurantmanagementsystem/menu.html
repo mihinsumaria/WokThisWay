@@ -143,10 +143,8 @@ input[type="checkbox"]{
       <a class="navbar-brand" href="#">WokThisWay</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="Login_temp.html">Login</a></li>
-      <li><a href="Order.html">Order</a></li>
-      <li><a href="Menu.html">Menu</a></li>
+      <li class="active"><a href="{% url 'guest_menu_page' %}">Menu</a></li>
+      <li><a href="Orders.html">Order</a></li>
     </ul>
   </div>
 </nav>
