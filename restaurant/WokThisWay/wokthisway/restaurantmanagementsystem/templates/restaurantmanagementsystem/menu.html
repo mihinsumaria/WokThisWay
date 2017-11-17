@@ -147,7 +147,7 @@ input[type="checkbox"]{
       <li><a href="Orders.html">Orders</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li style="color:white">Logged in as: {{ username }}</li>
+      <li><span class="navbar-text">Logged in as: {{ username }}</span></li>
       <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>

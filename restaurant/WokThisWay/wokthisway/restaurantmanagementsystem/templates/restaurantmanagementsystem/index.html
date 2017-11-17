@@ -9,10 +9,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
-    body { 
-      {% load staticfiles %}
-  background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
-  
+body { 
+    {% load staticfiles %}
+background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
+
 -webkit-background
 -size: cover;
   
@@ -121,19 +121,15 @@ background-size: cover;
 <div class="container-fluid text-center backgroundimage"> 
   <div class="row content text-center main">
     <h1 class="white">WokThisWay</h1>
-    <h2 class="white">Login or Continue as guest!</h2>
+    <h2 class="white">Place an order right away!</h2>
   </div>   
   <div class="row content">
-    <a class="buttonhover" href="{% url 'login_page' %}"><div class="col-sm-6 text-center border-right">
+    <a class="buttonhover" href="{% url 'login_page' %}"><div class="col-sm-12 text-center border-right">
       <h2>Login to your account!</h2>
       <span class="glyphicon glyphicon-user"></span>
       <!--<hr>-->
       <p>Don't have an account? Create one now! <a href="{% url 'register' %}">Register</a></p>
     </div>
-    <a class="buttonhover" href="{% url 'guest_menu_page' %}"><div class="col-sm-6 text-center">
-      <h2>Continue as Guest</h2>
-      <span class="glyphicon glyphicon-log-in"></span>
-    </div></a>
   </div>
 
 </div>
