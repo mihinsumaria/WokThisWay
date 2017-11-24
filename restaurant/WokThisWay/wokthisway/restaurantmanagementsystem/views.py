@@ -179,7 +179,8 @@ def login_page(request,loggedin=0):
                 if(password==Customer.objects.filter(name=username).values('password')[0]['password']):
                     request.session['username']=username
                     food_list=[]
-                    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+                    render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+                    return redirect(guest_menu_page)
                 else:
                     loggedin=1
             else:

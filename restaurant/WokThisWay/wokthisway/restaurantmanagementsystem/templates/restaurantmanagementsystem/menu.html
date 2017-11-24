@@ -9,7 +9,87 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 
-.dropbtn {
+body { 
+      {% load staticfiles %}
+  background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
+  
+-webkit-background
+-size: cover;
+  
+-moz-background-size: cover;
+  
+-o-background-size: cover;
+  
+background-size: cover;
+}
+
+    .white{
+      color:#ffffff;
+    }
+    .main{
+      padding-top: 100px;
+    } 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 300px 
+    }
+
+    .row.content a.buttonhover
+    {
+      color:#ffffff;
+    }
+
+    .row.content a.buttonhover:hover
+    {
+      color:#c0c0c0;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /*.glyphicon{
+      font-size: 30px;
+    }*/
+
+    .border-right{
+      padding-right: 20px;
+      /*border-right: 1px solid #ccc;*/
+      padding-bottom: 300px; 
+    }
+
+    .backgroundimage{
+      /*{% load staticfiles %}
+      background-image: url("{% static "images/home.jpg" %}");*/
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100% auto;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+/**.dropbtn {
     background-color: #4CAF50;
     color: white;
     padding: 16px;
@@ -57,19 +137,8 @@
     left: 100%;
     margin-top: -1px;
 }
-body {
-  background: url("1.jpg") no-repeat center center fixed;
 
--webkit-background
--size: cover;
-
--moz-background-size: cover;
-
--o-background-size: cover;
-
-background-size: cover;
-}
-
+**/
 h1{
 color:white}
 
@@ -99,7 +168,7 @@ input[type="checkbox"]{
 .spinner input {
   text-align: right;
 }
-
+/**
 .input-group-btn-vertical {
   position: relative;
   white-space: nowrap;
@@ -132,7 +201,7 @@ input[type="checkbox"]{
   position: absolute;
   top: 0;
   left: 4px;
-}
+}**/
 </style>
 </head>
 <body>
@@ -166,7 +235,35 @@ input[type="checkbox"]{
   <div class="col-md-4">-->
 
 <div class="container">
-  <div class="dropdown">
+  <div class = "btn-group">
+    <a href="{% url 'dessert' %}"><button type="button" class="btn btn-success"><a href="{% url 'beverage' %}">Beverage</a></button></a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Indian <span class="caret"></span></button>
+      <div class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'indian_menu' 'Breakfast' %}">Breakfast</a></li>
+        <li><a class="dropdown-item" href="{% url 'indian_menu' 'Appetizer' %}">Appetizer</a></li>
+        <li><a class="dropdown-item" href="{% url 'indian_menu' 'Main Course' %}">Main Course</a></li>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">American <span class="caret"></span></button>
+      <div class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'american_menu' 'Breakfast' %}">Breakfast</a></li>
+        <li><a class="dropdown-item" href="{% url 'american_menu' 'Appetizer' %}">Appetizer</a></li>
+        <li><a class="dropdown-item" href="{% url 'american_menu' 'Main Course' %}">Main Course</a></li>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Chinese <span class="caret"></span></button>
+      <div class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'chinese_menu' 'Breakfast' %}">Breakfast</a></li>
+        <li><a class="dropdown-item" href="{% url 'chinese_menu' 'Appetizer' %}">Appetizer</a></li>
+        <li><a class="dropdown-item" href="{% url 'chinese_menu' 'Main Course' %}">Main Course</a></li>
+      </div>
+    </div>
+    <a href="{% url 'dessert' %}"><button type="button" class="btn btn-success">Dessert</button></a>
+  </div>    
+  <!--<div class="dropdown">
     <button class="dropbtn">Filter
     <span class="caret"></span></button>
     <ul class="dropdown-content">
@@ -199,7 +296,7 @@ input[type="checkbox"]{
       <li><a tabindex="-1" href="{% url 'dessert' %}">Dessert</a></li>
 
     </ul>
-  </div>
+  </div>-->
 </div>
 
   </div>
@@ -323,6 +420,7 @@ input[type="checkbox"]{
 	</div>
 </div> -->
 </div>
+
 <script>
 $(document).ready(function(){
   $('.dropdown-submenu a.test').on("click", function(e){
@@ -331,5 +429,11 @@ $(document).ready(function(){
     e.preventDefault();
   });
 });
-</script></body>
+</script>
+<div class="navbar navbar-fixed-bottom">
+  <footer class="container-fluid text-center">
+    <p>WokThisWay LLC</p>
+  </footer>
+</div>
+</body>
 </html>
