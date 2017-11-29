@@ -324,39 +324,56 @@
       <br>
       <br>
       <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <p>Delete Dishes</p>
 	  
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
-        <div class="form-group">
-      <label for="usr">Name:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="usr">Description:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="usr">Cuisine:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="usr">Category:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="usr">Base Price:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Add</button>
-        </div>
+        <form action="{% url 'add_dish'%}" method="POST">
+                {% csrf_token %}
+                  <div class="form-group">
+                <label for="usr">ID:</label>
+                <input type="text" class="form-control" id="usr" name = "id">
+              </div>
+                  <div class="form-group">
+                <label for="usr">Name:</label>
+                <input type="text" class="form-control" id="usr" name = "name">
+              </div>
+              <div class="form-group">
+                <label for="usr">Description:</label>
+                <input type="text" class="form-control" id="usr" name = "description">
+              </div>
+              <div class="form-group">
+                <label for="usr">Course:</label>
+                <input type="text" class="form-control" id="usr" name= "course">
+              </div>
+              <div class="form-group">
+                <label for="usr">Cuisine:</label>
+                <input type="text" class="form-control" id="usr" name= "cuisine">
+              </div>
+              <div class="form-group">
+                <label for="usr">Category:</label>
+                <input type="text" class="form-control" id="usr" name= "category">
+              </div>
+              <div class="form-group">
+                <label for="usr">Base Price:</label>
+                <input type="text" class="form-control" id="usr" name ="price">
+              </div>
+              
+                  <div class="col-sm-12 form-group">
+                    <button class="btn btn-default pull-right" type="submit">Add</button>
+                  </div>
+        </form>
       </div>
+      <form action="{% url 'del_dish'%}" method="POST">
+                {% csrf_token %}
        <div class="form-group">
       <label for="usr">Name:</label>
-      <input type="text" class="form-control" id="usr">
+      <input type="text" class="form-control" id="usr" name ="name">
     </div> 
       <br>
       <div class="row">
@@ -364,6 +381,7 @@
           <button class="btn btn-default pull-right" type="submit">Delete</button>
         </div>
       </div>
+    </form>
     </div>
   </div>
 </div>
