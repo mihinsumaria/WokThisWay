@@ -216,39 +216,18 @@
   <h2>Table Orders</h2>
     <div class="col-lg-8">
 	<h4>Table content column1</h4>  
-	<div class="row">
-	Table buttons placed here row1
+
+  <div class="row">
+  {% for table in tables%}
      <div class="col-lg-2">
-	 button 1
-		</div>
-		 <div class="col-lg-2">
-		 button 2
-		</div>
-		 <div class="col-lg-2">
-		 button 3
-		</div>
-		<div class="col-lg-2">
-		 button 4
-		</div>
-	  
-     </div>    
-	 
-	 <div class="row">
-	Table buttons placed here row2
-     <div class="col-lg-2">
-	 button 5
-		</div>
-		 <div class="col-lg-2">
-		 button 6
-		</div>
-		 <div class="col-lg-2">
-		 button 7
-		</div>
-		<div class="col-lg-2">
-		 button 8
-		</div>
-	  
-     </div>    
+   Table id : {{table.table_id}}
+   Table Status : {{table.status}}
+    </div>
+    {%ifequal forloop.counter 3 %}
+  </div>
+      <div class="row">
+        {%endifequal%}
+    {%endfor%} 
 	 
     </div>
 	

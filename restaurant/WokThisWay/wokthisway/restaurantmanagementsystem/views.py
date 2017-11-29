@@ -53,7 +53,7 @@ def total_bill():
     return "{0:.2f}".format(totalprice)
 
 
-# function Just For Test. Needs to be deleted Later
+
 def add_to_cart(request):
     username=request.session['username']
     global cart
@@ -101,7 +101,7 @@ def cart_transaction(request):
                 bill =0
             return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
-        #IF ORDER bUTTON PRESSED , TO BE IMPLEMENTED
+        #IF ORDER bUTTON PRESSED 
         elif 'order' in request.POST:
 
                 current_orderID = get_order_id() + 1
@@ -130,6 +130,10 @@ def index(request):
     if(request.session.has_key('username')):
         return redirect(guest_menu_page)
     return render(request,'restaurantmanagementsystem/index.html',)
+
+def cashier(request):
+    tables =  Table.objects.all()
+    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables})
 
 def beverage_menu(request):
     username=request.session['username']

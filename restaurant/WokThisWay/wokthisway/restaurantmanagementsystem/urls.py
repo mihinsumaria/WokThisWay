@@ -8,6 +8,9 @@ urlpatterns = [
     #localhost/
     url(r'^$', views.index, name= 'index' ),
 
+    url(r'^cashier/$',views.cashier, name = 'cashier'),
+
+
     #locahost/menu/beverage
     url(r'^beverage/$',views.beverage_menu, name = 'beverage'),
     #locahost/menu/indian_menu
