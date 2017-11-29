@@ -220,15 +220,18 @@
   <div class="row">
   {% for table in tables%}
      <div class="col-lg-2">
-   Table id : {{table.table_id}}
-   Table Status : {{table.status}}
-    </div>
-    {%ifequal forloop.counter 3 %}
-  </div>
-      <div class="row">
-        {%endifequal%}
-    {%endfor%} 
-	 
+      Table id : {{table.table_id}}<br>
+         {%if table.status%}
+              Table Status : Occupied
+         {%else%}
+                Table Status : Unoccupied
+         {%endif%}
+      </div>
+      {%ifequal forloop.counter 3 %}
+            </div>
+          <div class="row">
+      {%endifequal%}
+  {%endfor%} 
     </div>
 	
 	
