@@ -59,7 +59,8 @@ def add_to_cart(request):
     global cart
     foods = request.POST.getlist("food")
     qty = request.POST.getlist("quantity")
-    tableId = request.POST.get("tableId")
+    #tableId = request.POST.get("tableId")
+    tableId=request.session['tableId']
     print(tableId)
     while '' in qty:            # removes unchecked items
         qty.remove('')
@@ -176,14 +177,22 @@ def login_page(request,loggedin=0):
         if form.is_valid():
             username=request.POST.get("name","")
             password=request.POST.get("password","")
+            tableid=request.POST.get("tableID","")
+            table=Table.objects.get(table_id=tableid)
             if(Customer.objects.filter(name=username)):
-                if(password==Customer.objects.filter(name=username).values('password')[0]['password']):
+                if(password==Customer.objects.filter(name=username).values('password')[0]['password'] and table.status==0):
                     request.session['username']=username
+                    request.session['tableid']=tableid
                     food_list=[]
-                    render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+                    table.status=1
+                    table.save()
+                    render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid})
                     return redirect(guest_menu_page)
                 else:
-                    loggedin=1
+                    if(table.status==1):
+                        loggedin=2
+                    else:
+                        loggedin=1
             else:
                 loggedin=1
             return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
@@ -195,6 +204,10 @@ def login_page(request,loggedin=0):
     return render(request,'restaurantmanagementsystem/login_page.html',{'form':form,'loggedin':loggedin})
 
 def logout(request):
+    tableid=request.session['tableid']
+    table=Table.objects.get(table_id=tableid)
+    table.status=0
+    table.save()
     del request.session['username']
     return redirect(index)
 def menu_page(request):
@@ -205,7 +218,8 @@ def guest_menu_page(request):
     if(request.session.has_key('username')):
         food_list=[]
         username=request.session['username']
-        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username})
+        tableid=request.session['tableid']
+        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid})
     else:
         return redirect(login_page)
 

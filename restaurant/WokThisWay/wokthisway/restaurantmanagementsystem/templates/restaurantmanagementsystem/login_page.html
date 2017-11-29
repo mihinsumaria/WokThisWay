@@ -146,6 +146,9 @@ background-size: cover;
                     {% if loggedin == 1 %}
                     <p style="color:red">Incorrect username or password</p>
                     {% endif %}
+                    {% if loggedin == 2 %}
+                    <p style="color:red">Table Occupied</p>
+                    {% endif %}
                     Not Registered? <a href="{% url 'register' %}">Register here</a></div>
             </div>
         </div>
