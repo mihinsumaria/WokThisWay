@@ -33,5 +33,7 @@ urlpatterns = [
     url(r'^orderStart/$',views.add_to_cart, name = 'add_to_cart'),
 
     url(r'^orderTrans/$',views.cart_transaction, name = 'cart_transaction'),
+
+    url(r'^cTrans/$',views.cashier_transaction, name = 'cashier_transaction'),
     url(r'^logout/$',views.logout, name = 'logout'),
 ]

@@ -131,9 +131,6 @@ def index(request):
         return redirect(guest_menu_page)
     return render(request,'restaurantmanagementsystem/index.html',)
 
-def cashier(request):
-    tables =  Table.objects.all()
-    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables})
 
 def beverage_menu(request):
     username=request.session['username']
@@ -237,3 +234,27 @@ def register(request,registered=0):
     else:
         form = RegisterForm()
         return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
+
+####################### CASHIER FUNCTIONS #################################
+
+
+def cashier(request):
+    orders = Order.objects.filter(status= 0)
+    tables =  Table.objects.all()
+    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+
+def cashier_transaction(request):
+    if request.POST:
+        # IF THE REMOVE BUTTON PRESSED
+        if 'remove' in request.POST:
+            print ("remove")
+            done_orders = request.POST.getlist("remove_check")
+            for item in done_orders:
+                current_order = item.split(":")
+                food = Food.objects.get(name = current_order[0])
+                order = Order.objects.get(food = food,table_id = current_order[1])
+                order.status=1
+                order.save()
+    orders = Order.objects.filter(status= 0)
+    tables =  Table.objects.all()
+    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})

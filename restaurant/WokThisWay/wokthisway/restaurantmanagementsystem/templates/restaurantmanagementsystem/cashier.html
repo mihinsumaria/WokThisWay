@@ -233,15 +233,50 @@
       {%endifequal%}
   {%endfor%} 
     </div>
-	
+	</div>
 	
 	
 	
 	<div class="col-lg-4">
 	<h4>Table content column2</h4>
 	</div>
-	</div>
-	
+
+	<!--   new ITEMS  -->
+      <h3>Pending Order</h3>
+      <form action="{% url 'cashier_transaction'%}" method="POST">
+          {% csrf_token %}
+      <div class="table-responsive">
+      <table class="table table-hover">
+        {%if orders%}
+        <thead>
+          <tr>
+            <th>Dish</th>
+            <th>Table</th>
+            <th>    </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for item in orders%}
+        <tr><td>{{item.food}}</td>
+          <td>{{item.table_id}}</td>
+        <td><input type="checkbox" name = "remove_check" id="" value= "{{item.food}}:{{item.table_id}}"/></td>
+      </tr>
+      {%endfor%}
+      
+        <button type="submit" name = "remove" >Remove</button> </tr>
+        </tbody>
+        {%else%}
+        <h3>No Items Added to Cart<h3>
+       {%endif%}
+
+        </table>
+        <h3>Total Bill : $ {{bill}}<h3>
+
+
+      </div>
+    </form>
+
+<!--   new ITEMS  -->
 	</div>
 	
 	
