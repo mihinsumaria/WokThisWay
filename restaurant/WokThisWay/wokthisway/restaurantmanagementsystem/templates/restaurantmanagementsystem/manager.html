@@ -258,43 +258,50 @@
 
 <!-- Container (Employee Section) -->
 <div id="section2" class="container-fluid bg-grey">
-  <h2 class="text-center">Employee</h2>
-  <div class="row">
-    <div class="col-sm-5">
-	<!-- Added div for scroll 
-	<div id="section2">-->
-      <p>Add Employee</p>
-      <br>
-      <br>
-      <p>Delete Employee</p>
-	  
-    </div>
-    <div class="col-sm-7 slideanim">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="username" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Add</button>
-        </div>
-      </div>
-       <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="username" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Delete</button>
-        </div>
-      </div>
-    </div>
+ <h2 class="text-center">Employee</h2>
+ <div class="row">
+  <div class="col-sm-5">
+  <!-- Added div for scroll 
+  <div id="section2">-->
+   <p>Add Employee</p>
+   <br>
+   <br>
+   <p>Delete Employee</p>
+   
   </div>
+  <div class="col-sm-7 slideanim">
+   <div class="row">
+     <form action="{%url 'add_emp'%}" method='POST'>
+    {% csrf_token %}
+    <div class="col-sm-6 form-group">
+     <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+    </div>
+    <div class="col-sm-6 form-group">
+     <input class="form-control" id="password" name="password" placeholder="Passsword" type="password" required>
+    </div>
+​
+    <div class="col-sm-12 form-group">
+     <button class="btn btn-default pull-right" type="submit">Add</button>
+    </div>
+   </form>
+   </div>
+   <form action="{%url 'del_emp'%}" method='POST'>
+   {% csrf_token %}
+    <div class="col-sm-6 form-group">
+     <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+    </div>
+    <div class="col-sm-6 form-group">
+     <input class="form-control" id="password" name="password" placeholder="Password" type="password" required>
+    </div>
+   <br>
+   <div class="row">
+    <div class="col-sm-12 form-group">
+     <button class="btn btn-default pull-right" type="submit">Delete</button>
+    </div>
+   </div>
+   </form>
+  </div>
+ </div>
 </div>
 
 <!-- Container (Dishes Section) -->

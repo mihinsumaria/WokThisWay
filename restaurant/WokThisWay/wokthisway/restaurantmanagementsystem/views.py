@@ -284,3 +284,34 @@ def del_dish(request):
     food = Food.objects.get(name = name)
     food.delete()    
     return render(request,'restaurantmanagementsystem/manager.html')
+
+def add_emp(request):    
+    name = request.POST.get("name")    
+    password = request.POST.get("password")    
+    cashier = Cashier(name=name, password=password)    
+    cashier.save()    
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+
+def del_emp(request):    
+    name = request.POST.get("name")    
+    password = request.POST.get("password")       
+    cashier1 = Cashier.objects.get(name=name, password=password)    
+    cashier1.delete()    
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+                
+
+ 
+
+
+
+
+
+                            
+                        
+
+
+
+
+        
