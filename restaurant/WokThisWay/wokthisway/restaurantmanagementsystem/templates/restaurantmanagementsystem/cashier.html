@@ -219,23 +219,62 @@
   <div class="row">
   {% for table in tables%}
      <div class="col-lg-3">
-      Table Number : {{table.table_id}}<br>
-
-         {%if table.status%}
-         <!-- cell color :red -->
-             <button class="btn btn-group-lg btn-danger"><br>Table Status:<br>Occupied<br><br></button>
-
-
-
-         {%else%}
-         <!-- cell color :green -->
-                <button class="btn btn-group-lg btn-success"><br>Table Status :<br>Unoccupied<br><br></button>
-         {%endif%}
-      </div>
-      {%ifequal forloop.counter 3 %}
-            </div><br><br>
-          <div class="row">
-      {%endifequal%}
+   Table id : {{table.table_id}}<br>
+     {%if table.status%}
+     <!-- cell color :red -->
+       <button class="btn btn-group-lg btn-danger" data-toggle="modal" data-target="#myModal"><br>Table Status:<br>Occupied<br><br></button>
+       <!-- Modal -->
+       <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+​
+         <!-- Modal content-->
+         <div class="modal-content">
+          <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Order Details</h4>
+          </div>
+          <div class="modal-body">
+           <p>Table order content...</p>
+          </div>
+          <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+         </div>
+​
+        </div>
+       </div>
+​
+​
+     {%else%}
+     <!-- cell color :green -->
+        <button class="btn btn-group-lg btn-success" data-toggle="modal" data-target="#myModal"><br>Table Status :<br>Unoccupied<br><br></button>
+​
+        <!-- Modal -->
+       <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+​
+         <!-- Modal content-->
+         <div class="modal-content">
+          <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Order Details</h4>
+          </div>
+          <div class="modal-body">
+           <p>Table order content...</p>
+          </div>
+          <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+         </div>
+​
+        </div>
+       </div>
+     {%endif%}
+   </div>
+   {%ifequal forloop.counter 3 %}
+      </div><br><br>
+     <div class="row">
+   {%endifequal%}
   {%endfor%} 
     </div>
 	</div>

@@ -229,10 +229,13 @@
       </tr>
     </thead>
     <tbody>
+      {% for k,v in table.items%}
       <tr>
-        <td>Monday</td>
-        <td>$1210</td>
-		</tr></tbody>
+        <td>{{k}}</td>
+        <td>${{v}}</td>
+		</tr>
+    {%endfor%}
+  </tbody>
 </table>
         
     </div>

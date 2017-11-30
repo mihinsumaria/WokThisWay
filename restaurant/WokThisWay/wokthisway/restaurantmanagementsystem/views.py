@@ -3,6 +3,10 @@ from django.db.models import Max,Count
 from .models import *
 from django.db.models import Sum
 from .forms import *
+import datetime
+import collections
+#import pandas as pd
+#import matplotlib.pyplot as plt
 
 # Create your views here
 
@@ -286,7 +290,8 @@ def cashier_transaction(request):
 
 
 def manager(request):
-    return render(request,'restaurantmanagementsystem/manager.html')
+    table = calcSeven()
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 def add_dish(request):
     food_id = request.POST.get("id")
@@ -298,21 +303,24 @@ def add_dish(request):
     course = request.POST.get("course")
     food = Food(ID = food_id,name = name,description = description, cuisine = cuisine,category = category, price = price,course =course)
     food.save()
-    return render(request,'restaurantmanagementsystem/manager.html')
+    table = calcSeven()
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 def del_dish(request):
     
     name =request.POST.get("name")
     food = Food.objects.get(name = name)
-    food.delete()    
-    return render(request,'restaurantmanagementsystem/manager.html')
+    food.delete() 
+    table = calcSeven()
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 def add_emp(request):    
     name = request.POST.get("name")    
     password = request.POST.get("password")    
     cashier = Cashier(name=name, password=password)    
-    cashier.save()    
-    return render(request,'restaurantmanagementsystem/manager.html')
+    cashier.save()  
+    table = calcSeven()
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 
 def del_emp(request):    
@@ -320,7 +328,35 @@ def del_emp(request):
     password = request.POST.get("password")       
     cashier1 = Cashier.objects.get(name=name, password=password)    
     cashier1.delete()    
-    return render(request,'restaurantmanagementsystem/manager.html')
+    table = calcSeven()
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
+
+def calcSeven():
+    orders= Order.objects.all()
+    table = dict()
+    for i in range(0,7):
+        dd= datetime.datetime.now() - datetime.timedelta(days=i)
+        table[dd.date()] = 0
+    for order in orders:
+        
+        key = order.timestamp.date() 
+        a =(order.food.price * order.quantity)
+        print(key,a)
+        if( key in table):
+            food = Food.objects.get(name = order.food)
+            a =(order.food.price * order.quantity)
+            print("a" + str(a))
+            table[key] = table[key] + a
+    sorted_table = collections.OrderedDict(sorted(table.items()))
+
+    #df = pd.DataFrame.from_dict(sorted_table)
+    #df.columns = ['Date', 'Sales']
+   # print(df)
+    #df.plot(x='Date', y= 'Sales', kind ='bar')
+    #plt.xlabel('Date')
+    #plt.ylabel('Sales')
+
+    return sorted_table
 
                 
 
