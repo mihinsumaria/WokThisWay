@@ -214,13 +214,12 @@
 <div id="section1" class="container-fluid">
   <div class="row">
   <h2>Table Orders</h2>
-    <div class="col-lg-8">
-	<h4>Table content column1</h4>  
+    <div class="col-lg-8"> 
 
   <div class="row">
   {% for table in tables%}
      <div class="col-lg-3">
-      Table id : {{table.table_id}}<br>
+      Table Number : {{table.table_id}}<br>
 
          {%if table.status%}
          <!-- cell color :red -->
@@ -244,11 +243,10 @@
 	
 	
 	<div class="col-lg-4">
-	<h4>Table content column2</h4>
 	</div>
 
 	<!--   new ITEMS  -->
-      <h3>Pending Order</h3>
+      <h3>Pending Orders</h3>
       <form action="{% url 'cashier_transaction'%}" method="POST">
           {% csrf_token %}
       <div class="table-responsive">
@@ -272,12 +270,10 @@
         <button type="submit" name = "remove" >Remove</button> </tr>
         </tbody>
         {%else%}
-        <h3>No Items Added to Cart<h3>
+        <h4>No Pending Orders <h4>
        {%endif%}
 
         </table>
-        <h3>Total Bill : $ {{bill}}<h3>
-
 
       </div>
     </form>

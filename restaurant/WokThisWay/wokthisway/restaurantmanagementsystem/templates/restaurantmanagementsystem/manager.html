@@ -286,7 +286,7 @@
    </form>
    </div>
    <form action="{%url 'del_emp'%}" method='POST'>
-   {% csrf_token %}
+    {% csrf_token %}
     <div class="col-sm-6 form-group">
      <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
     </div>

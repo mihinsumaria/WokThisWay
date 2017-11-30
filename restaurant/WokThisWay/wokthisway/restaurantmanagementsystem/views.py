@@ -60,7 +60,7 @@ def add_to_cart(request):
     foods = request.POST.getlist("food")
     qty = request.POST.getlist("quantity")
     #tableId = request.POST.get("tableId")
-    tableId=request.session['tableId']
+    tableId=request.session['tableid']
     print(tableId)
     while '' in qty:            # removes unchecked items
         qty.remove('')
@@ -208,6 +208,14 @@ def logout(request):
     table=Table.objects.get(table_id=tableid)
     table.status=0
     table.save()
+    customer = Customer.objects.get(name =request.session['username'] )
+    orders = Order.objects.filter(customer = customer, table_id= tableid, status = 0)
+    if(orders != None):
+        for order in orders:
+            order.status =1
+            order.save()
+
+
     del request.session['username']
     return redirect(index)
 def menu_page(request):
