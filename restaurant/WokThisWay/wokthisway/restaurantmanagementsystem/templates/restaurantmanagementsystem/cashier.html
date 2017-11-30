@@ -219,16 +219,20 @@
 
   <div class="row">
   {% for table in tables%}
-     <div class="col-lg-2">
+     <div class="col-lg-3">
       Table id : {{table.table_id}}<br>
          {%if table.status%}
-              Table Status : Occupied
+         <!-- cell color :red -->
+             <button class="btn btn-group-lg btn-danger"><br>Table Status:<br>Occupied<br><br></button>
+
+
          {%else%}
-                Table Status : Unoccupied
+         <!-- cell color :green -->
+                <button class="btn btn-group-lg btn-success"><br>Table Status :<br>Unoccupied<br><br></button>
          {%endif%}
       </div>
       {%ifequal forloop.counter 3 %}
-            </div>
+            </div><br><br>
           <div class="row">
       {%endifequal%}
   {%endfor%} 
