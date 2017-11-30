@@ -221,9 +221,11 @@
   {% for table in tables%}
      <div class="col-lg-3">
       Table id : {{table.table_id}}<br>
+
          {%if table.status%}
          <!-- cell color :red -->
              <button class="btn btn-group-lg btn-danger"><br>Table Status:<br>Occupied<br><br></button>
+
 
 
          {%else%}

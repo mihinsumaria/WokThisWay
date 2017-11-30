@@ -272,3 +272,60 @@ def cashier_transaction(request):
     orders = Order.objects.filter(status= 0)
     tables =  Table.objects.all()
     return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+
+
+    ####################### MANAGER FUNCTIONS #################################
+
+
+def manager(request):
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+def add_dish(request):
+    food_id = request.POST.get("id")
+    name =request.POST.get("name")
+    description =request.POST.get("description")
+    cuisine = request.POST.get("cuisine")
+    category= request.POST.get("category")
+    price = request.POST.get("price")
+    course = request.POST.get("course")
+    food = Food(ID = food_id,name = name,description = description, cuisine = cuisine,category = category, price = price,course =course)
+    food.save()
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+def del_dish(request):
+    
+    name =request.POST.get("name")
+    food = Food.objects.get(name = name)
+    food.delete()    
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+def add_emp(request):    
+    name = request.POST.get("name")    
+    password = request.POST.get("password")    
+    cashier = Cashier(name=name, password=password)    
+    cashier.save()    
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+
+def del_emp(request):    
+    name = request.POST.get("name")    
+    password = request.POST.get("password")       
+    cashier1 = Cashier.objects.get(name=name, password=password)    
+    cashier1.delete()    
+    return render(request,'restaurantmanagementsystem/manager.html')
+
+                
+
+ 
+
+
+
+
+
+                            
+                        
+
+
+
+
+        

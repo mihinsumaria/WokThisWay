@@ -8,9 +8,6 @@ urlpatterns = [
     #localhost/
     url(r'^$', views.index, name= 'index' ),
 
-    url(r'^cashier/$',views.cashier, name = 'cashier'),
-
-
     #locahost/menu/beverage
     url(r'^beverage/$',views.beverage_menu, name = 'beverage'),
     #locahost/menu/indian_menu
@@ -34,6 +31,15 @@ urlpatterns = [
 
     url(r'^orderTrans/$',views.cart_transaction, name = 'cart_transaction'),
 
+########################################
+    url(r'^cashier/$',views.cashier, name = 'cashier'),
     url(r'^cTrans/$',views.cashier_transaction, name = 'cashier_transaction'),
+##########################################################
+    url(r'^manager/$',views.manager, name = 'manager'),
+    url(r'^newDish/$',views.add_dish, name = 'add_dish'),
+    url(r'^delDish/$',views.del_dish, name = 'del_dish'),
+    url(r'^add_emp/$',views.add_emp, name = 'add_emp'),
+    url(r'^del_emp/$', views.del_emp, name='del_emp'),
+#########################################################
     url(r'^logout/$',views.logout, name = 'logout'),
 ]
