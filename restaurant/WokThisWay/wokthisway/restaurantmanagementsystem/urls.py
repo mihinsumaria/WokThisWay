@@ -33,6 +33,8 @@ urlpatterns = [
 
 ########################################
     url(r'^cashier/$',views.cashier, name = 'cashier'),
+    url(r'^cashier_login_page/$',views.cashier_login_page, name = 'cashier_login_page'),
+    url(r'^cashierlogout/$',views.cashierlogout, name = 'cashierlogout'),
     url(r'^cTrans/$',views.cashier_transaction, name = 'cashier_transaction'),
 ##########################################################
     url(r'^manager/$',views.manager, name = 'manager'),
@@ -42,4 +44,5 @@ urlpatterns = [
     url(r'^del_emp/$', views.del_emp, name='del_emp'),
 #########################################################
     url(r'^logout/$',views.logout, name = 'logout'),
+    
 ]

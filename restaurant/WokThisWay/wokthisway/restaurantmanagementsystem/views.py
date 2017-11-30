@@ -262,13 +262,13 @@ def register(request,registered=0):
         return render(request,'restaurantmanagementsystem/registration.html',{'form':form,'registered':registered})
 
 ####################### CASHIER FUNCTIONS #################################
-
-
 def cashier(request):
-    orders = Order.objects.filter(status= 0)
-    tables =  Table.objects.all()
-    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
-
+    if(request.session.has_key('cashierusername')):
+        orders = Order.objects.filter(status= 0)
+        tables =  Table.objects.all()
+        return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+    else:
+        return redirect(cashier_login_page)
 def cashier_transaction(request):
     if request.POST:
         # IF THE REMOVE BUTTON PRESSED
@@ -284,6 +284,41 @@ def cashier_transaction(request):
     orders = Order.objects.filter(status= 0)
     tables =  Table.objects.all()
     return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+
+def cashier_login_page(request,loggedin=0):
+    loggedin=0
+    pwd=""
+    dbpwd=""
+    if request.method=='POST':
+        form=CashierLoginForm(request.POST)
+        if form.is_valid():
+            username=request.POST.get("name","")
+            password=request.POST.get("password","")
+            
+            if(Cashier.objects.filter(name=username)):
+                cash=Cashier.objects.get(name=username)
+                if(password==cash.password):
+                    request.session['cashierusername']=username
+                    print(request.session['cashierusername'])
+                    orders = Order.objects.filter(status= 0)
+                    tables =  Table.objects.all()
+                    render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+                    return redirect(cashier)
+                else:
+                    loggedin=1
+            else:
+                loggedin=1
+            return render(request,'restaurantmanagementsystem/cashier_login_page.html',{'form':form,'loggedin':loggedin})
+    else:
+        if(request.session.has_key('cashierusername')):
+            return redirect(cashier)
+        form=CashierLoginForm()
+    return render(request,'restaurantmanagementsystem/cashier_login_page.html',{'form':form,'loggedin':loggedin})
+
+def cashierlogout(request):
+    del request.session['cashierusername']
+    return redirect(cashier_login_page)
+
 
 
     ####################### MANAGER FUNCTIONS #################################
