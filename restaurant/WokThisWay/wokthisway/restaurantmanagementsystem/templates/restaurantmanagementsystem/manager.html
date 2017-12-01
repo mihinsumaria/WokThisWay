@@ -247,13 +247,15 @@
     <thead class="thead-inverse">
       <tr>
         <th>Sale of the Day</th>
-		<th><span class="label label-default">$1210</span></th>
+		<th><span class="label label-default">${{ saleoftheday }}</span></th>
 		</tr>
         
     </thead>
     
 </table>
-	<span class="glyphicon glyphicon-signal logo"></span>
+	{% load staticfiles %}
+  <img src="{% static "images/analytics.png" %}" style="width: 400px; height: 400px">
+  <!--<span class="glyphicon glyphicon-signal logo"></span>-->
     
   </div>
   </div>

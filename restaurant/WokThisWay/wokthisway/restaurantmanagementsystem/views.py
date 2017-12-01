@@ -5,8 +5,11 @@ from django.db.models import Sum
 from .forms import *
 import datetime
 import collections
-#import pandas as pd
-#import matplotlib.pyplot as plt
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
+import os
 
 # Create your views here
 
@@ -222,7 +225,7 @@ def logout(request):
     orders = Order.objects.filter(customer = customer, table_id= tableid, status = 0)
     if(orders != None):
         for order in orders:
-            order.status =1
+            order.status =2
             order.save()
 
 
@@ -332,7 +335,8 @@ def cashierlogout(request):
 
 def manager(request):
     table = calcSeven()
-    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
+    saleoftheday=graphing(table)
+    return render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
 
 def add_dish(request):
     food_id = request.POST.get("id")
@@ -373,7 +377,7 @@ def del_emp(request):
     return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 def calcSeven():
-    orders= Order.objects.all()
+    orders= Order.objects.filter(status=1)
     table = dict()
     for i in range(0,7):
         dd= datetime.datetime.now() - datetime.timedelta(days=i)
@@ -389,15 +393,28 @@ def calcSeven():
             print("a" + str(a))
             table[key] = table[key] + a
     sorted_table = collections.OrderedDict(sorted(table.items()))
-
-    #df = pd.DataFrame.from_dict(sorted_table)
-    #df.columns = ['Date', 'Sales']
-   # print(df)
-    #df.plot(x='Date', y= 'Sales', kind ='bar')
-    #plt.xlabel('Date')
-    #plt.ylabel('Sales')
-
     return sorted_table
+
+def graphing(sorted_table):
+    df=pd.DataFrame(sorted_table,index=[0])
+    x=[str(i) for i in df]
+    y=[df[i][0] for i in df]
+    fig,ax=plt.subplots()
+    ax.bar(x,y,color='#f4511e')
+    for label in ax.get_xticklabels():
+        label.set_rotation(45)
+    rects=ax.patches
+    labels=[str(i) for i in y]
+    for rect, label in zip(rects,labels):
+        height=rect.get_height()
+        if(height==0):
+            ax.text(rect.get_x()+rect.get_width()/2,height+5,label,ha='center',va='bottom')
+        else:
+            ax.text(rect.get_x()+rect.get_width()/2,height-5,label,ha='center',va='bottom')            
+    saleoftheday=y[-1]
+    path=os.path.join(os.path.dirname(__file__),'static/images/')+'analytics.png'
+    plt.savefig(path)
+    return saleoftheday
 
 def get_recommedations():
     recommendation=dict()
