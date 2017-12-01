@@ -28,7 +28,7 @@
       color: #303030;
       font-weight: 400;
       margin-bottom: 30px;
-  }  
+  }
   .jumbotron {
       background-color: #f4511e;
       color: #fff;
@@ -80,7 +80,7 @@
       font-style: normal;
   }
   .panel {
-      border: 1px solid #f4511e; 
+      border: 1px solid #f4511e;
       border-radius:0 !important;
       transition: box-shadow 0.5s;
   }
@@ -156,7 +156,7 @@
     0% {
       opacity: 0;
       transform: translateY(70%);
-    } 
+    }
     100% {
       opacity: 1;
       transform: translateY(0%);
@@ -166,7 +166,7 @@
     0% {
       opacity: 0;
       -webkit-transform: translateY(70%);
-    } 
+    }
     100% {
       opacity: 1;
       -webkit-transform: translateY(0%);
@@ -197,14 +197,14 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#myPage">Wok This Way</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'cashierlogout' %}">Log out</a></li>
-        
+
       </ul>
     </div>
   </div>
@@ -214,7 +214,7 @@
 <div id="section1" class="container-fluid">
   <div class="row">
   <h2>Table Orders</h2>
-    <div class="col-lg-8"> 
+    <div class="col-lg-8">
 
   <div class="row">
   {% for table in tables%}
@@ -222,9 +222,9 @@
    Table id : {{table.table_id}}<br>
      {%if table.status%}
      <!-- cell color :red -->
-       <button class="btn btn-group-lg btn-danger" data-toggle="modal" data-target="#myModal"><br>Table Status:<br>Occupied<br><br></button>
+       <button class="btn btn-group-lg btn-danger" data-toggle="modal" data-target="#myModal{{table.table_id}}"><br>Table Status:<br>Occupied<br><br></button>
        <!-- Modal -->
-       <div id="myModal" class="modal fade" role="dialog">
+       <div id="myModal{{table.table_id}}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 ​
          <!-- Modal content-->
@@ -233,9 +233,15 @@
            <button type="button" class="close" data-dismiss="modal">&times;</button>
            <h4 class="modal-title">Order Details</h4>
           </div>
-          <div class="modal-body">
-           <p>Table order content...</p>
-          </div>
+          {%for order in orders%}
+        {%ifequal table.table_id order.table_id%}
+        <div class="modal-body">
+
+              <p>{{order.food}} - {{order.quantity}}</p>
+
+        </div>
+         {%endifequal%}
+        {%endfor%}
           <div class="modal-footer">
            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
@@ -260,7 +266,7 @@
            <h4 class="modal-title">Order Details</h4>
           </div>
           <div class="modal-body">
-           <p>Table order content...</p>
+           <p>Table Unoccupied</p>
           </div>
           <div class="modal-footer">
            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -275,12 +281,12 @@
       </div><br><br>
      <div class="row">
    {%endifequal%}
-  {%endfor%} 
+  {%endfor%}
     </div>
 	</div>
-	
-	
-	
+
+
+
 	<div class="col-lg-4">
 	</div>
 
@@ -305,7 +311,7 @@
         <td><input type="checkbox" name = "remove_check" id="" value= "{{item.food}}:{{item.table_id}}"/></td>
       </tr>
       {%endfor%}
-      
+
         <button type="submit" name = "remove" >Remove</button> </tr>
         </tbody>
         {%else%}
@@ -319,15 +325,15 @@
 
 <!--   new ITEMS  -->
 	</div>
-	
-	
-	
+
+
+
 	  <!-- <table class="table table-hover">
     <thead class="thead-inverse">
       <tr>
         <th>Day</th>
         <th>Sale</th>
-        
+
       </tr>
     </thead>
     <tbody>
@@ -336,40 +342,40 @@
         <td>$1210</td>
 		</tr></tbody>
 </table>
-        
+
     </div>
     <div class="col-sm-4">
 	Added div for scroll
-	<div id="section1"> 
-      
+	<div id="section1">
+
 	  <table class="table table-hover">
     <thead class="thead-inverse">
       <tr>
         <th>Sale of the Day</th>
 		<th><span class="label label-default">$1210</span></th>
 		</tr>
-        
+
     </thead>
-    
+
 </table>
 	<span class="glyphicon glyphicon-signal logo"></span>
-    
+
   </div>
   </div>
 </div>
 
-<!--Container (Employee Section) 
+<!--Container (Employee Section)
 <div id="section2" class="container-fluid bg-grey">
   <h2 class="text-center">Employee</h2>
   <div class="row">
     <div class="col-sm-5">
-	<!-- Added div for scroll 
+	<!-- Added div for scroll
 	<div id="section2">
       <p>Add Employee</p>
       <br>
       <br>
       <p>Delete Employee</p>
-	  
+
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
@@ -399,15 +405,15 @@
   </div>
 </div>
 
-<!-- Container (Dishes Section) 
+<!-- Container (Dishes Section)
 <div id="section3" class="container-fluid bg-grey">
-  
+
   <div class="row">
   <h2 class="text-center">Dishes</h2>
     <div class="col-sm-5">
-	
-	<!-- Added div for scroll 
-	
+
+	<!-- Added div for scroll
+
       <p>Add Dishes</p>
       <br>
       <br>
@@ -427,7 +433,7 @@
       <br>
       <br>
       <p>Delete Dishes</p>
-	  
+
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
@@ -451,7 +457,7 @@
       <label for="usr">Base Price:</label>
       <input type="text" class="form-control" id="usr">
     </div>
-    
+
         <div class="col-sm-12 form-group">
           <button class="btn btn-default pull-right" type="submit">Add</button>
         </div>
@@ -459,7 +465,7 @@
        <div class="form-group">
       <label for="usr">Name:</label>
       <input type="text" class="form-control" id="usr">
-    </div> 
+    </div>
       <br>
       <div class="row">
         <div class="col-sm-12 form-group">
@@ -491,13 +497,13 @@ $(document).ready(function(){
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 900, function(){
-   
+
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
     } // End if
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;

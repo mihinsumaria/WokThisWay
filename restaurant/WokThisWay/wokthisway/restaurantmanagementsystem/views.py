@@ -287,12 +287,13 @@ def cashier_transaction(request):
             for item in done_orders:
                 current_order = item.split(":")
                 food = Food.objects.get(name = current_order[0])
-                order = Order.objects.get(food = food,table_id = current_order[1])
+                order = Order.objects.get(food = food,table_id = current_order[1], status = 0)
                 order.status=1
                 order.save()
     orders = Order.objects.filter(status= 0)
     tables =  Table.objects.all()
-    return render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+    render(request,'restaurantmanagementsystem/cashier.html',{'tables':tables,'orders':orders})
+    return redirect(cashier)
 
 def cashier_login_page(request,loggedin=0):
     loggedin=0
@@ -303,7 +304,7 @@ def cashier_login_page(request,loggedin=0):
         if form.is_valid():
             username=request.POST.get("name","")
             password=request.POST.get("password","")
-            
+
             if(Cashier.objects.filter(name=username)):
                 cash=Cashier.objects.get(name=username)
                 if(password==cash.password):
@@ -349,7 +350,9 @@ def add_dish(request):
     food = Food(ID = food_id,name = name,description = description, cuisine = cuisine,category = category, price = price,course =course)
     food.save()
     table = calcSeven()
-    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
+    saleoftheday=graphing(table)
+    render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+    return redirect(manager)
 
 def del_dish(request):
 
@@ -365,7 +368,9 @@ def add_emp(request):
     cashier = Cashier(name=name, password=password)
     cashier.save()
     table = calcSeven()
-    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
+    saleoftheday=graphing(table)
+    render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+    return redirect(manager)
 
 
 def del_emp(request):
@@ -374,7 +379,9 @@ def del_emp(request):
     cashier1 = Cashier.objects.get(name=name, password=password)
     cashier1.delete()
     table = calcSeven()
-    return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
+    saleoftheday=graphing(table)
+    render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+    return redirect(manager)
 
 def calcSeven():
     orders= Order.objects.filter(status=1)
@@ -410,7 +417,7 @@ def graphing(sorted_table):
         if(height==0):
             ax.text(rect.get_x()+rect.get_width()/2,height+5,label,ha='center',va='bottom')
         else:
-            ax.text(rect.get_x()+rect.get_width()/2,height-5,label,ha='center',va='bottom')            
+            ax.text(rect.get_x()+rect.get_width()/2,height-5,label,ha='center',va='bottom')
     saleoftheday=y[-1]
     path=os.path.join(os.path.dirname(__file__),'static/images/')+'analytics.png'
     plt.savefig(path)
