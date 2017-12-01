@@ -106,7 +106,7 @@ def cart_transaction(request):
                 bill =0
             return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
 
-        #IF ORDER bUTTON PRESSED 
+        #IF ORDER bUTTON PRESSED
         elif 'order' in request.POST:
 
                 current_orderID = get_order_id() + 1
@@ -134,6 +134,7 @@ def cart_transaction(request):
 def index(request):
     if(request.session.has_key('username')):
         return redirect(guest_menu_page)
+    get_recommedations()
     return render(request,'restaurantmanagementsystem/index.html',)
 
 
@@ -142,35 +143,40 @@ def beverage_menu(request):
     global cart
     food_list = Food.objects.filter(cuisine = 'Beverage')
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def indian_menu(request,food_course):
     username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Indian', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def chinese_menu(request,food_course):
     username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Chinese', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def american_menu(request,food_course):
     username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'American', course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def dessert(request):
     username=request.session['username']
     global cart
     food_list = Food.objects.filter(cuisine = 'Dessert')
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def login_page(request,loggedin=0):
     loggedin=0
@@ -342,27 +348,27 @@ def add_dish(request):
     return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 def del_dish(request):
-    
+
     name =request.POST.get("name")
     food = Food.objects.get(name = name)
-    food.delete() 
+    food.delete()
     table = calcSeven()
     return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
-def add_emp(request):    
-    name = request.POST.get("name")    
-    password = request.POST.get("password")    
-    cashier = Cashier(name=name, password=password)    
-    cashier.save()  
+def add_emp(request):
+    name = request.POST.get("name")
+    password = request.POST.get("password")
+    cashier = Cashier(name=name, password=password)
+    cashier.save()
     table = calcSeven()
     return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
 
-def del_emp(request):    
-    name = request.POST.get("name")    
-    password = request.POST.get("password")       
-    cashier1 = Cashier.objects.get(name=name, password=password)    
-    cashier1.delete()    
+def del_emp(request):
+    name = request.POST.get("name")
+    password = request.POST.get("password")
+    cashier1 = Cashier.objects.get(name=name, password=password)
+    cashier1.delete()
     table = calcSeven()
     return render(request,'restaurantmanagementsystem/manager.html',{'table':table})
 
@@ -373,8 +379,8 @@ def calcSeven():
         dd= datetime.datetime.now() - datetime.timedelta(days=i)
         table[dd.date()] = 0
     for order in orders:
-        
-        key = order.timestamp.date() 
+
+        key = order.timestamp.date()
         a =(order.food.price * order.quantity)
         print(key,a)
         if( key in table):
@@ -393,18 +399,14 @@ def calcSeven():
 
     return sorted_table
 
-                
-
- 
-
-
-
-
-
-                            
-                        
-
-
-
-
-        
+def get_recommedations():
+    recommendation=dict()
+    foodFreq = Order.objects.values_list('food').annotate(Count('food'))
+    for food,freq in foodFreq:
+        name = Food.objects.values_list('name', flat = 'True').get(ID= food)
+        recommendation[name]= freq
+    recommendationSorted =sorted(recommendation.items(), key=lambda x: x[1])
+    lenght = len(recommendationSorted)
+    if(lenght>4):
+        recommendationSorted = recommendationSorted[lenght-4:lenght]
+    return reversed(recommendationSorted)

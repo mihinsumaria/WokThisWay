@@ -9,17 +9,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 
-body { 
+body {
       {% load staticfiles %}
   background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
-  
+
 -webkit-background
 -size: cover;
-  
+
 -moz-background-size: cover;
-  
+
 -o-background-size: cover;
-  
+
 background-size: cover;
 }
 
@@ -28,15 +28,15 @@ background-size: cover;
     }
     .main{
       padding-top: 100px;
-    } 
+    }
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-    
+
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
-      height: 300px 
+      height: 300px
     }
 
     .row.content a.buttonhover
@@ -48,7 +48,7 @@ background-size: cover;
     {
       color:#c0c0c0;
     }
-    
+
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
@@ -63,7 +63,7 @@ background-size: cover;
     .border-right{
       padding-right: 20px;
       /*border-right: 1px solid #ccc;*/
-      padding-bottom: 300px; 
+      padding-bottom: 300px;
     }
 
     .backgroundimage{
@@ -73,21 +73,21 @@ background-size: cover;
       background-position: center center;
       background-size: 100% auto;
     }
-    
+
     /* Set black background color, white text and some padding */
     footer {
       background-color: #000000;
       color: white;
       padding: 15px;
     }
-    
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height:auto;} 
+      .row.content {height:auto;}
     }
 /**.dropbtn {
     background-color: #4CAF50;
@@ -262,7 +262,7 @@ input[type="checkbox"]{
       </div>
     </div>
     <a href="{% url 'dessert' %}" style="color: white;" class="btn btn-success">Dessert</a>
-  </div>    
+  </div>
   <!--<div class="dropdown">
     <button class="dropbtn">Filter
     <span class="caret"></span></button>
@@ -313,7 +313,7 @@ input[type="checkbox"]{
   <div class="table-responsive">
   <table class="table table-hover">
     <thead class="thead-inverse">
-      
+
       <tr>
         <th>#</th>
         <th>Your dish</th>
@@ -371,9 +371,20 @@ input[type="checkbox"]{
   <table class="table table-hover">
     <thead>
       <tr><th>Suggestions..</th></tr>
-    <tr><td>Tropical Smoothie</td></tr>
-    <tr><td>Chicken Tikka Masala</td></tr>
-    <tr><td>Chocolate Shake with Chocolate Chips</td></tr>
+      {%if recommendation%}
+      <tr>
+        <td>Dish Name</td>
+        <td>Order Frequency</td>
+    </tr>
+      {% for k,v in recommendation%}
+      <tr>
+        <td>{{k}}</td>
+        <td>{{v}}</td>
+    </tr>
+    {%endfor%}
+    {% else %}
+    <tr> No Suggestions to Show </tr>
+    {%endif%}
     </table>
 
   </div>
