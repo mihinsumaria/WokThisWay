@@ -31,3 +31,12 @@ class CashierLoginForm(forms.ModelForm):
 	class Meta:
 		model = Cashier
 		fields = ('name','password')
+
+class ManagerLoginForm(forms.ModelForm):
+	name=forms.CharField(label="Name")
+	password=forms.CharField(label="Password",widget=forms.PasswordInput)
+	name.widget.attrs.update({'class' : 'form-control'})
+	password.widget.attrs.update({'class' : 'form-control'})
+	class Meta:
+		model = Cashier
+		fields = ('name','password')

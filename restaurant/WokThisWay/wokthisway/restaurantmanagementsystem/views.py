@@ -10,6 +10,8 @@ import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import os
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 # Create your views here
 
@@ -339,9 +341,44 @@ def cashierlogout(request):
 
 
 def manager(request):
-    table = calcSeven()
-    saleoftheday=graphing(table)
-    return render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+    if(request.session.has_key('managerusername')):
+        table = calcSeven()
+        saleoftheday=graphing(table)
+        return render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+    else:
+        return redirect(manager_login_page)
+    
+
+def manager_login_page(request,loggedin=0):
+    loggedin=0
+    #pwd=""
+    #dbpwd=""
+    if request.method=='POST':
+        form=ManagerLoginForm(request.POST)
+        if form.is_valid():
+            username=request.POST.get("name","")
+            password=request.POST.get("password","")
+            user=authenticate(username=username,password=password)
+            if(user):
+                request.session['managerusername']=username
+                table = calcSeven()
+                saleoftheday=graphing(table)
+                render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
+                return redirect(manager)
+            else:
+                loggedin=1
+        else:
+            loggedin=1
+        return render(request,'restaurantmanagementsystem/manager_login_page.html',{'form':form,'loggedin':loggedin})
+    else:
+        if(request.session.has_key('managerusername')):
+            return redirect(manager)
+        form=ManagerLoginForm()
+    return render(request,'restaurantmanagementsystem/manager_login_page.html',{'form':form,'loggedin':loggedin})
+
+def managerlogout(request):
+    del request.session['managerusername']
+    return redirect(manager_login_page)
 
 def add_dish(request):
     food_id = request.POST.get("id")

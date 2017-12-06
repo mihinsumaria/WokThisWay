@@ -44,5 +44,6 @@ urlpatterns = [
     url(r'^del_emp/$', views.del_emp, name='del_emp'),
 #########################################################
     url(r'^logout/$',views.logout, name = 'logout'),
-    
+    url(r'^manager_login_page/$',views.manager_login_page, name = 'manager_login_page'),
+    url(r'^managerlogout/$',views.managerlogout, name = 'managerlogout'),
 ]

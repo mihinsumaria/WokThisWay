@@ -201,204 +201,50 @@
       </button>
       <a class="navbar-brand" href="#myPage">Wok This Way</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <!--<div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#section1">Analytics</a></li>
-        <li><a href="#section2">Employee</a></li>
-        <li><a href="#section3">Dishes</a></li>
-        <li><a href="{% url 'managerlogout' %}">Logout</a></li>
+        <li><a href="#section1">Log out</a></li>
+        
       </ul>
-    </div>
+    </div>-->
   </div>
 </nav>
 
-<!-- Container (Analytics Section) -->
-<div id="section1" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
-  <h2>Analytics</h2>
-    <div class="col-sm-8">
-	
-      <h4>Sales of the Week</h4>   
-         
-       
-	   <table class="table table-hover">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Day</th>
-        <th>Sale</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      {% for k,v in table.items%}
-      <tr>
-        <td>{{k}}</td>
-        <td>${{v}}</td>
-		</tr>
-    {%endfor%}
-  </tbody>
-</table>
-        
-    </div>
-    <div class="col-sm-4">
-	<!--Added div for scroll
-	<div id="section1"> -->
-      
-	  <table class="table table-hover">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Sale of the Day</th>
-		<th><span class="label label-default">${{ saleoftheday }}</span></th>
-		</tr>
-        
-    </thead>
-    
-</table>
-	{% load staticfiles %}
-  <img src="{% static "images/analytics.png" %}" style="width: 400px; height: 400px">
-  <!--<span class="glyphicon glyphicon-signal logo"></span>-->
-    
-  </div>
-  </div>
-</div>
-
-<!-- Container (Employee Section) -->
-<div id="section2" class="container-fluid bg-grey">
- <h2 class="text-center">Employee</h2>
- <div class="row">
-  <div class="col-sm-5">
-  <!-- Added div for scroll 
-  <div id="section2">-->
-   <p>Add Employee</p>
-   <br>
-   <br>
-   <p>Delete Employee</p>
-   
-  </div>
-  <div class="col-sm-7 slideanim">
-   <div class="row">
-     <form action="{%url 'add_emp'%}" method='POST'>
-    {% csrf_token %}
-    <div class="col-sm-6 form-group">
-     <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-    </div>
-    <div class="col-sm-6 form-group">
-     <input class="form-control" id="password" name="password" placeholder="Passsword" type="password" required>
-    </div>
-​
-    <div class="col-sm-12 form-group">
-     <button class="btn btn-default pull-right" type="submit">Add</button>
-    </div>
-   </form>
-   </div>
-   <form action="{%url 'del_emp'%}" method='POST'>
-    {% csrf_token %}
-    <div class="col-sm-6 form-group">
-     <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-    </div>
-    <div class="col-sm-6 form-group">
-     <input class="form-control" id="password" name="password" placeholder="Password" type="password" required>
-    </div>
-   <br>
-   <div class="row">
-    <div class="col-sm-12 form-group">
-     <button class="btn btn-default pull-right" type="submit">Delete</button>
-    </div>
-   </div>
-   </form>
-  </div>
- </div>
-</div>
-
-<!-- Container (Dishes Section) -->
-<div id="section3" class="container-fluid bg-grey">
-  
-  <div class="row">
-  <h2 class="text-center">Dishes</h2>
-    <div class="col-sm-5">
-	
-	<!-- Added div for scroll -->
-	
-      <p>Add Dishes</p>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p>Delete Dishes</p>
-	  
-    </div>
-    <div class="col-sm-7 slideanim">
-      <div class="row">
-        <form action="{% url 'add_dish'%}" method="POST">
-                {% csrf_token %}
-                  <div class="form-group">
-                <label for="usr">ID:</label>
-                <input type="text" class="form-control" id="usr" name = "id">
-              </div>
-                  <div class="form-group">
-                <label for="usr">Name:</label>
-                <input type="text" class="form-control" id="usr" name = "name">
-              </div>
-              <div class="form-group">
-                <label for="usr">Description:</label>
-                <input type="text" class="form-control" id="usr" name = "description">
-              </div>
-              <div class="form-group">
-                <label for="usr">Course:</label>
-                <input type="text" class="form-control" id="usr" name= "course">
-              </div>
-              <div class="form-group">
-                <label for="usr">Cuisine:</label>
-                <input type="text" class="form-control" id="usr" name= "cuisine">
-              </div>
-              <div class="form-group">
-                <label for="usr">Category:</label>
-                <input type="text" class="form-control" id="usr" name= "category">
-              </div>
-              <div class="form-group">
-                <label for="usr">Base Price:</label>
-                <input type="text" class="form-control" id="usr" name ="price">
-              </div>
-              
-                  <div class="col-sm-12 form-group">
-                    <button class="btn btn-default pull-right" type="submit">Add</button>
-                  </div>
-        </form>
-      </div>
-      <form action="{% url 'del_dish'%}" method="POST">
-                {% csrf_token %}
-       <div class="form-group">
-      <label for="usr">Name:</label>
-      <input type="text" class="form-control" id="usr" name ="name">
-    </div> 
-      <br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Delete</button>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <strong>Manager Login</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method = "POST" role="form">
+                      {% csrf_token %}
+                      <fieldset>
+                        {% for field in form %}
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">{{field.label}}</label> <div class="col-sm-9"> {{field}}</div>                       
+                        </div>
+                        {% endfor %}
+                      </fieldset>
+                    <div class="form-group last">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-success btn-sm">
+                                Sign in</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    {% if loggedin == 1 %}
+                    <p style="color:red">Incorrect username or password</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
-    </form>
     </div>
-  </div>
 </div>
-
+</div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 
 <script>
