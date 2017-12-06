@@ -82,7 +82,8 @@ def add_to_cart(request):
     food_course = Food.objects.values_list('course', flat = True).get(ID = lastItem)
     food_list = Food.objects.filter(cuisine = cuisine, course = food_course)
     bill = total_bill()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
 def cart_transaction(request):
     username=request.session['username']
@@ -109,7 +110,8 @@ def cart_transaction(request):
             else:
                 food_list={}
                 bill =0
-            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username})
+            recommendation = get_recommedations()
+            return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
 
         #IF ORDER bUTTON PRESSED
         elif 'order' in request.POST:
@@ -138,8 +140,8 @@ def cart_transaction(request):
 def index(request):
     if(request.session.has_key('username')):
         return redirect(guest_menu_page)
-    get_recommedations()
-    return render(request,'restaurantmanagementsystem/index.html',)
+    recommendation = get_recommedations()
+    return render(request,'restaurantmanagementsystem/index.html',{'recommendation':recommendation})
 
 
 def beverage_menu(request):
@@ -347,7 +349,7 @@ def manager(request):
         return render(request,'restaurantmanagementsystem/manager.html',{'table':table,'saleoftheday':saleoftheday})
     else:
         return redirect(manager_login_page)
-    
+
 
 def manager_login_page(request,loggedin=0):
     loggedin=0
