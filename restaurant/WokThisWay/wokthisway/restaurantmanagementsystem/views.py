@@ -132,7 +132,6 @@ def cart_transaction(request):
                 return render(request,'restaurantmanagementsystem/test.html',)
 
 
-
 #ONLY FOR TEST. NEEDS TO BE DELETED LATER
 def index(request):
     if(request.session.has_key('username')):
@@ -143,43 +142,48 @@ def index(request):
 
 def beverage_menu(request):
     username=request.session['username']
+    tableid=request.session['tableid']
     global cart
     food_list = Food.objects.filter(cuisine = 'Beverage')
     bill = total_bill()
     recommendation = get_recommedations()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation,'tableid':tableid})
 
 def indian_menu(request,food_course):
     username=request.session['username']
+    tableid=request.session['tableid']
     global cart
     food_list = Food.objects.filter(cuisine = 'Indian', course = food_course)
     bill = total_bill()
     recommendation = get_recommedations()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation,'tableid':tableid})
 
 def chinese_menu(request,food_course):
     username=request.session['username']
+    tableid=request.session['tableid']
     global cart
     food_list = Food.objects.filter(cuisine = 'Chinese', course = food_course)
     bill = total_bill()
     recommendation = get_recommedations()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation,'tableid':tableid})
 
 def american_menu(request,food_course):
     username=request.session['username']
+    tableid=request.session['tableid']
     global cart
     food_list = Food.objects.filter(cuisine = 'American', course = food_course)
     bill = total_bill()
     recommendation = get_recommedations()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation,'tableid':tableid})
 
 def dessert(request):
     username=request.session['username']
+    tableid=request.session['tableid']
     global cart
     food_list = Food.objects.filter(cuisine = 'Dessert')
     bill = total_bill()
     recommendation = get_recommedations()
-    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation})
+    return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'cart':cart,'bill':bill,'username':username,'recommendation':recommendation,'tableid':tableid})
 
 def login_page(request,loggedin=0):
     loggedin=0

@@ -8,7 +8,36 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    border-left:0px;
+}
+.table-curved td, .table-curved th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.table-curved th {
+    border-top: none;
+}
+.table-curved th:first-child {
+    border-radius: 6px 0 0 0;
+}
+.table-curved th:last-child {
+    border-radius: 0 6px 0 0;
+}
+.table-curved th:only-child{
+    border-radius: 6px 6px 0 0;
+}
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
+}
 body {
       {% load staticfiles %}
   background: url("{% static "images/home.jpg" %}") no-repeat center center fixed;
@@ -184,15 +213,15 @@ input[type="checkbox"]{
 
   </div>
   <br><br>
-<div class="row">
+<div class="row" style="background-color: rgba(255,255,255,0.7); padding: 10px 10px 10px 10px;">
 
 
-  <div class="col-sm-8">
+  <div class="col-sm-9" style="margin-bottom: 30px">
     <form action="{% url 'add_to_cart'%}" method="POST">
         {% csrf_token %}
 
   <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover table-curved">
     <thead class="thead-inverse">
 
       <tr>
@@ -228,7 +257,7 @@ input[type="checkbox"]{
 
     <!--<h5>Table Number : </h5> <input type="number" required="True" name = "tableId">-->
     <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>
-    <br>>
+    <br>
 
     {%else%}
     <tr>
@@ -247,44 +276,52 @@ input[type="checkbox"]{
   </table>
 </div></form></div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-3">
   <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover table-curved">
     <thead>
       <tr><th>Suggestions..</th></tr>
       {%if recommendation%}
       <tr>
         <td>Dish Name</td>
-        <td>Order Frequency</td>
+        <!--<td>Order Frequency</td>-->
     </tr>
       {% for k,v in recommendation%}
       <tr>
         <td>{{k}}</td>
-        <td>{{v}}</td>
+        <!--<td>{{v}}</td>-->
     </tr>
     {%endfor%}
     {% else %}
-    <tr> No Suggestions to Show </tr>
+    <tr> 
+      <td>No Suggestions to Show</td>
+    </tr>
     {%endif%}
     </table>
 
   </div>
-  <h3>Cart</h3>
   <form action="{% url 'cart_transaction'%}" method="POST">
       {% csrf_token %}
   <div class="table-responsive">
-  <table class="table table-hover">
-    {%if cart%}
+  <table class="table table-hover table-curved">
     <thead>
+      <tr>
+        <th>Cart</th>
+        <th><br/></th>
+        <th><br/></th>
+        <th><br/></th>
+        <th><br/></th>
+      </tr>
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>    </th>
-      </tr>
+        <th><br/></th>
+      </tr> 
     </thead>
     <tbody>
+      {%if cart%}
       {%for item in cart%}
     <tr><td>{{item.get_id}}</td>
       <td>{{item.get_name}}</td>
@@ -293,15 +330,26 @@ input[type="checkbox"]{
     <td><input type="checkbox" name = "remove_check" id="" value= "{{item.get_id}}"/></td>
   </tr>
   {%endfor%}
-  <tr><button type="submit" name = "order" >Order</button>
-    <button type="submit" name = "remove" >Remove</button> </tr>
+  <tr><button type="submit" class="btn btn-md btn-primary" style="margin-right: 5px; margin-bottom: 10px;" name = "order" >Order</button>
+    <button type="submit" class="btn btn-md btn-primary" name = "remove" style="margin-left: 5px; margin-bottom: 10px;">Remove</button> </tr>
     </tbody>
     {%else%}
-    <h3>No Items Added to Cart<h3>
+    <tr>
+    <td>No Items Added to Cart</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
     {%endif%}
-
-    </table>
-    <h3>Total Bill : $ {{bill}}<h3>
+  <tr>
+    <td>Total Bill: ${{bill}}</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+</table>
 
 
   </div>
