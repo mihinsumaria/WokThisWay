@@ -450,7 +450,7 @@ def graphing(sorted_table):
     fig,ax=plt.subplots()
     ax.bar(x,y,color='#f4511e')
     for label in ax.get_xticklabels():
-        label.set_rotation(45)
+        label.set_rotation(25)
     rects=ax.patches
     labels=[str(i) for i in y]
     for rect, label in zip(rects,labels):
