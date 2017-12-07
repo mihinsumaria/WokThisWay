@@ -248,7 +248,9 @@ def guest_menu_page(request):
         food_list=[]
         username=request.session['username']
         tableid=request.session['tableid']
-        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid})
+        recommendation = get_recommedations()
+        #print(recommendation)
+        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid,'recommendation':recommendation})
     else:
         return redirect(login_page)
 
