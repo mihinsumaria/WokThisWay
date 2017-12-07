@@ -245,12 +245,14 @@ def menu_page(request):
 
 def guest_menu_page(request):
     if(request.session.has_key('username')):
-        food_list=[]
+        global cart
+        food_list = Food.objects.all()
+        bill = total_bill()
+        recommendation = get_recommedations()
         username=request.session['username']
         tableid=request.session['tableid']
-        recommendation = get_recommedations()
         #print(recommendation)
-        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid,'recommendation':recommendation})
+        return render(request,'restaurantmanagementsystem/menu.html',{'food_list':food_list,'username':username,'tableid':tableid,'recommendation':recommendation,'bill':bill})
     else:
         return redirect(login_page)
 
