@@ -20,20 +20,20 @@ python manage.py runserver
 ```
 The web application will be running on your host machine at 127.0.0.1:8000
 
-###Deployment
+### Deployment
 Django’s primary deployment platform is WSGI, the Python standard for web servers and applications. More information can be found at [How to deploy with WSGI](https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/)
 
-###Built with
+### Built with
 * Python
 * Django
 * HTML/CSS/JS
 * SQLite3
 
-###Authors
+### Authors
 * Mihin Sumaria
 * Vaseem Shaikh
 * Rushikesh Naidu
 * Manasee Godsay
 
-###Who do I talk to?
+### Who do I talk to?
 For any questions send an email at mssumaria@wpi.edu
